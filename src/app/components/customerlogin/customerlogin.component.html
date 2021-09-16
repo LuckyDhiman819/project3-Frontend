@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+<div class="bradcam_area breadcam_bg_1">
+    <h3>Customer Login</h3>
+
+   
+   
+   
+
+<div class="loginForm">
+    <div class="main">
+        <br><h1 style="color:black"><b></b></h1>
+        <div class="container">
+            <form  [formGroup]="customerLoginForm" (ngSubmit)="customerLogin()">
+                <fieldset>
+                    <label style="color:black"><b>Username :</b></label>
+                    <div class="box">
+                        <i class="fa fa-user fa-lg"></i>
+                            <input type="number" name="customerUserName" id="customerUserName" placeholder="Entre Your id" formControlName="customerUserName">
+                            <div class="alert alert-danger" *ngIf="customerLoginForm.get('customerUserName')?.hasError('required') && customerLoginForm.get('customerUserName')?.dirty">
+                            Customer Username is Required
+                            </div>
+                        </div><br>
+                        <label style="color:black"><b>Password :</b></label>
+                       
+                        <div class="box">
+                            <i class="fa fa-key fa-lg"></i>
+                            <input type="password" name="password" id="password" placeholder="Entre Your Password" formControlName="password">
+                            <div class="alert alert-danger" *ngIf="customerLoginForm.get('password')?.hasError('required') && customerLoginForm.get('password')?.dirty">
+                                Password is Required
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="btn-text-center">
+                            <button type="submit" class="btn btn-primary" [disabled]="!customerLoginForm.valid" (click) = "login()">Log-in</button> &nbsp;
+                                <button class="btn btn-warning" (click) = "sign_up()">Sign-Up</button> &nbsp;
+                                <button class="btn btn-danger" (click) = "forgetPassword()">Forget Password</button>&nbsp;
+                                <br><br>
+                                
+                                <button class="btn btn-dark" (click) = "back()">Back</button>&nbsp;
+                        </div>
+                </fieldset>
+                <br>
+
+            </form>
+        
+        </div>
+        
+        </div>
+
+</div>
+
+
+</div>
+
+
+<app-footer></app-footer>
+
