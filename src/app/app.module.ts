@@ -15,10 +15,10 @@ import { BlogsComponent } from './components/blogs/blogs.component';
 import { ElementsComponent } from './components/elements/elements.component';
 import { ConactComponent } from './components/conact/conact.component';
 import { AboutComponent } from './components/about/about.component';
-
+import { CustomerSignupComponent } from './components/customer-signup/customer-signup.component';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerBookingFormComponent } from './components/customer-booking-form/customer-booking-form.component';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,12 +31,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ElementsComponent,
     ConactComponent,
     AboutComponent,
+    CustomerSignupComponent,
     CustomerBookingFormComponent,
+
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule
