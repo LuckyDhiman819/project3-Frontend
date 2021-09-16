@@ -11,6 +11,7 @@ import { BlogsComponent } from './components/blogs/blogs.component';
 import { ElementsComponent } from './components/elements/elements.component';
 import { ConactComponent } from './components/conact/conact.component';
 import { AboutComponent } from './components/about/about.component';
+import { ViewBookingHistoryComponent } from './components/view-booking-history/view-booking-history.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AboutComponent } from './components/about/about.component';
     ElementsComponent,
     ConactComponent,
     AboutComponent,
+    ViewBookingHistoryComponent,
   ],
   imports: [
     BrowserModule,
