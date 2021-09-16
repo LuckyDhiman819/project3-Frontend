@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,7 +15,9 @@ import { BlogsComponent } from './components/blogs/blogs.component';
 import { ElementsComponent } from './components/elements/elements.component';
 import { ConactComponent } from './components/conact/conact.component';
 import { AboutComponent } from './components/about/about.component';
+
 import { CustomerBookingFormComponent } from './components/customer-booking-form/customer-booking-form.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -32,8 +37,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
