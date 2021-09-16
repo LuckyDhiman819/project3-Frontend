@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -13,6 +17,8 @@ import { ConactComponent } from './components/conact/conact.component';
 import { AboutComponent } from './components/about/about.component';
 import { CustomerSignupComponent } from './components/customer-signup/customer-signup.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerBookingFormComponent } from './components/customer-booking-form/customer-booking-form.component';
+
 
 @NgModule({
   declarations: [
@@ -25,13 +31,17 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
     ElementsComponent,
     ConactComponent,
     AboutComponent,
-    CustomerSignupComponent
+    CustomerSignupComponent,
+    CustomerBookingFormComponent,
+
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
