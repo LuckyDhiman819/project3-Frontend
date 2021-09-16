@@ -19,6 +19,7 @@ import { ViewBookingHistoryComponent } from './components/view-booking-history/v
 import { CustomerSignupComponent } from './components/customer-signup/customer-signup.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerBookingFormComponent } from './components/customer-booking-form/customer-booking-form.component';
+import { CustomerloginComponent } from './components/customerlogin/customerlogin.component';
 
 
 @NgModule({
@@ -32,10 +33,10 @@ import { CustomerBookingFormComponent } from './components/customer-booking-form
     ElementsComponent,
     ConactComponent,
     AboutComponent,
+    CustomerloginComponent,
     ViewBookingHistoryComponent,
     CustomerSignupComponent,
     CustomerBookingFormComponent,
-
   ],
   imports: [
     FormsModule,
