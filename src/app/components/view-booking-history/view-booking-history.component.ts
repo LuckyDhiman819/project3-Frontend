@@ -17,7 +17,6 @@ export class ViewBookingHistoryComponent implements OnInit {
   constructor( public customerService:CustomerService,public router: Router,public activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    //sd
     // this.Id = this.activatedRoute.snapshot.params['id'];
     // this.getAppointmentHistory();
   }
