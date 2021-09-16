@@ -12,6 +12,9 @@ import { ElementsComponent } from './components/elements/elements.component';
 import { ConactComponent } from './components/conact/conact.component';
 import { AboutComponent } from './components/about/about.component';
 
+import { CustomerloginComponent } from './components/customerlogin/customerlogin.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,10 +26,13 @@ import { AboutComponent } from './components/about/about.component';
     ElementsComponent,
     ConactComponent,
     AboutComponent,
+    
+    CustomerloginComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
