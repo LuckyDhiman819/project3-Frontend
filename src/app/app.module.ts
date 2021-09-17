@@ -13,6 +13,9 @@ import { ElementsComponent } from './components/elements/elements.component';
 import { ConactComponent } from './components/conact/conact.component';
 import { AboutComponent } from './components/about/about.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditCustomerComponent } from './components/edit-customer/edit-customer.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { EditBookingComponent } from './components/edit-booking/edit-booking.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ElementsComponent,
     ConactComponent,
     AboutComponent,
+    EditCustomerComponent,
+    UpdatePasswordComponent,
+    EditBookingComponent,
   ],
   imports: [
     BrowserModule,
