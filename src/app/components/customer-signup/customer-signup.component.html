@@ -18,7 +18,7 @@
                 *ngIf="customerSignUpForm.get('customerUserName')?.hasError('required') && customerSignUpForm.get('customerUserName')?.dirty">
                 Customer User Name is Required
               </div>
-              <br> <br>
+              <br> 
             <div class="form-group">
               <label ><h4 > <b style="color: white"> Customer Name</b></h4></label>  
               <input type="text" class="form-control" formControlName="customerName" required>
@@ -60,7 +60,7 @@
     
             <div class="form-group">
               <label> <h4 > <b style="color: white">Mobile Number</b></h4> </label>
-              <input type="number" class="form-control" formControlName="phoneNumber" required>
+              <input type="number" class="form-control" formControlName="mobileNumber" required>
               <div class="alert alert-danger"
                 *ngIf="customerSignUpForm.get('mobileNumber')?.hasError('required') && customerSignUpForm.get('mobileNumber')?.dirty">
                 Phone is Required
@@ -89,20 +89,20 @@
     
             <div>
               <label for="address"> <h4 > <b style="color: white"> Address </b> </h4> </label><br>
-              <select name="country" id="country" required>
+              <select name="country" id="country" required formControlName = "country">
                 <option value="">--Select Country--</option>
                 <option value="India">India</option>
               </select>
               <br> <br> <br>
-              <select id="states" required >
+              <select name = "state" id="states" required formControlName = "state">
                 <option value ="">--Select State--</option>
                 <option value ="Andhra Pradesh">Andhra Pradesh</option>
                 
               </select>
               <br> <br> <br>
-              <select id="city">
+              <select name = "city" id="city" required formControlName = "city">
                 <option value ="">--Select City--</option>
-                <option value ="Mumbai">Mumbai/option>
+                <option value ="Mumbai">Mumbai</option>
               </select>
             </div>
             <br> <br>
@@ -116,7 +116,8 @@
               </div>
             </div>
             <br> <br>
-            <button type="submit" [disabled]="!customerSignUpForm.valid" class="btn btn-primary">Submit</button>&nbsp;
+            <button type="submit" [disabled]="" class="btn btn-primary">Submit</button>&nbsp;
+            <!-- !customerSignUpForm.valid -->
             <button class="btn btn-primary" id="login" (click)="login()">Login</button><br><br>
             <button class="btn btn-dark" (click)="dashboard()">Back</button>
           <br><br>
