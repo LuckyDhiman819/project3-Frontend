@@ -28,7 +28,7 @@ customerLoginForm! : FormGroup;
     console.log(this.customerLoginForm.value)
     this.customerService.customerLogin(this.customerLoginForm.get('customerUserName').value,this.customerLoginForm.get('password').value)
     .subscribe(() => {
-      console.log("Login Successfully")
+      console.log("Login Successfully!!")
       // this.router.navigate(["customerDashBoard", this.customerLoginForm.get('patientId').value]);
     },error=>{
       
