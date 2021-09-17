@@ -23,7 +23,9 @@ import { CustomerSignupComponent } from './components/customer-signup/customer-s
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerBookingFormComponent } from './components/customer-booking-form/customer-booking-form.component';
 import { CustomerloginComponent } from './components/customerlogin/customerlogin.component';
+import { CancelBookingComponent } from './components/cancel-booking/cancel-booking.component';
 import { BillingComponent } from './components/billing/billing.component';
+
 
 
 
@@ -43,6 +45,7 @@ import { BillingComponent } from './components/billing/billing.component';
     ViewBookingHistoryComponent,
     CustomerSignupComponent,
     CustomerBookingFormComponent,
+    CancelBookingComponent,
     BillingComponent,
 
   ],
