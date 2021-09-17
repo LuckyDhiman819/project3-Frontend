@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<div class="bradcam_area breadcam_bg">
+    <h3><b style="color:white">Booking History</b></h3>
+
+    <div class="ok">
+        <div class="row">
+            <div class="col-sm-4" align="center" *ngFor="let booking of bookings">
+                <div class="card text-white bg-dark">
+                    <div class="card-body">
+                        <h3 class="card-title" style="color: #1f6feb;" align="center"><b>Booking Details</b></h3>
+                        <hr>
+                        <div>
+                            <p class="card-text">
+                                <!-- Appointment Token : {{appointment.appointmentToken}}  </p>   -->
+                            <p class="card-text">customerUserName : {{booking.customerUserName}} </p>
+                            <p class="card-text">email : {{booking.email}} </p>
+                            <p class="card-text">idProof : {{booking.idProof}} </p>
+                            <p class="card-text">roomType : {{booking.roomType}} </p>
+                            <p class="card-text">numberOfRoom : {{booking.numberOfRoom}} </p>
+                            <p class="card-text">roomSize : {{booking.roomSize}} </p>
+                            <p class="card-text">roomNumber : {{booking.roomNumber}} </p>
+                            <p class="card-text">breakfast : {{booking.breakfast}} </p>
+                            <p class="card-text">drinks : {{booking.drinks}} </p>
+                            <p class="card-text">checkInDate : {{booking.checkInDate}} </p>
+                            <p class="card-text">checkOutDate : {{booking.checkOutDate}} </p>
+                            <p class="card-text">pickupAndDrop : {{booking.pickupAndDrop}} </p>
+                            <hr>
+                            <p>Booking Status</p>
+                            <button type="submit" class="btn btn-info" disabled>{{booking.bookingStatus}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <button class="btn btn-dark" (click)="Back()">Back</button>
+        </div>
+        <br>
+    </div>
+</div>
+<app-footer></app-footer>

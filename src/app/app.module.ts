@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,8 +15,16 @@ import { BlogsComponent } from './components/blogs/blogs.component';
 import { ElementsComponent } from './components/elements/elements.component';
 import { ConactComponent } from './components/conact/conact.component';
 import { AboutComponent } from './components/about/about.component';
+
 import { PickAndDropComponent } from './components/pick-and-drop/pick-and-drop.component';
-import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { ViewBookingHistoryComponent } from './components/view-booking-history/view-booking-history.component';
+import { CustomerSignupComponent } from './components/customer-signup/customer-signup.component';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerBookingFormComponent } from './components/customer-booking-form/customer-booking-form.component';
+import { CustomerloginComponent } from './components/customerlogin/customerlogin.component';
+
+
 
 @NgModule({
   declarations: [
@@ -26,11 +38,21 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
     ConactComponent,
     AboutComponent,
     PickAndDropComponent,
+    CustomerloginComponent,
+    ViewBookingHistoryComponent,
+    CustomerSignupComponent,
+    CustomerBookingFormComponent,
+
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
