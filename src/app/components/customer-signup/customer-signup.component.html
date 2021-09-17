@@ -1,11 +1,24 @@
   <app-navbar></app-navbar>
 
+
+    
+
+    
+
 <div class="bradcam_area breadcam_bg_1">
     <h3 > <b > SignUp Form</b></h3>
     <br> <br>
     <div class="container">
         <form novalidate [formGroup]="customerSignUpForm" (ngSubmit)="saveCustomer()">
           <fieldset>
+            <div class="form-group">
+              <label ><h4 > <b style="color: white"> Customer User Name</b></h4></label>  
+              <input type="text" class="form-control" formControlName="customerUserName" required>
+              <div class="alert alert-danger"
+                *ngIf="customerSignUpForm.get('customerUserName')?.hasError('required') && customerSignUpForm.get('customerUserName')?.dirty">
+                Customer User Name is Required
+              </div>
+              <br> 
             <div class="form-group">
               <label ><h4 > <b style="color: white"> Customer Name</b></h4></label>  
               <input type="text" class="form-control" formControlName="customerName" required>
@@ -47,18 +60,18 @@
     
             <div class="form-group">
               <label> <h4 > <b style="color: white">Mobile Number</b></h4> </label>
-              <input type="number" class="form-control" formControlName="phoneNumber" required>
+              <input type="number" class="form-control" formControlName="mobileNumber" required>
               <div class="alert alert-danger"
-                *ngIf="customerSignUpForm.get('phoneNumber')?.hasError('required') && customerSignUpForm.get('phoneNumber')?.dirty">
+                *ngIf="customerSignUpForm.get('mobileNumber')?.hasError('required') && customerSignUpForm.get('mobileNumber')?.dirty">
                 Phone is Required
               </div>
             </div>
     
             <div class="form-group">
               <label> <h4 > <b style="color: white"> Age </b> </h4> </label>
-              <input type="number" class="form-control" formControlName="patientAge" required>
+              <input type="number" class="form-control" formControlName="age" required>
               <div class="alert alert-danger"
-                *ngIf="customerSignUpForm.get('patientAge')?.hasError('required') && customerSignUpForm.get('patientAge')?.dirty">
+                *ngIf="customerSignUpForm.get('age')?.hasError('required') && customerSignUpForm.get('age')?.dirty">
                 Age is Required
               </div>
             </div>
@@ -76,9 +89,21 @@
     
             <div>
               <label for="address"> <h4 > <b style="color: white"> Address </b> </h4> </label><br>
-              <textarea id="w3review" name="address" rows="4" cols="50" placeholder="Entre your address"
-                formControlName="address">
-                </textarea>
+              <select name="country" id="country" required formControlName = "country">
+                <option value="">--Select Country--</option>
+                <option value="India">India</option>
+              </select>
+              <br> <br> <br>
+              <select name = "state" id="states" required formControlName = "state">
+                <option value ="">--Select State--</option>
+                <option value ="Andhra Pradesh">Andhra Pradesh</option>
+                
+              </select>
+              <br> <br> <br>
+              <select name = "city" id="city" required formControlName = "city">
+                <option value ="">--Select City--</option>
+                <option value ="Mumbai">Mumbai</option>
+              </select>
             </div>
             <br> <br>
     
@@ -91,12 +116,14 @@
               </div>
             </div>
             <br> <br>
-            <button type="submit" [disabled]="!customerSignUpForm.valid" class="btn btn-primary">Submit</button>&nbsp;
+            <button type="submit" [disabled]="" class="btn btn-primary">Submit</button>&nbsp;
+            <!-- !customerSignUpForm.valid -->
             <button class="btn btn-primary" id="login" (click)="login()">Login</button><br><br>
             <button class="btn btn-dark" (click)="dashboard()">Back</button>
           <br><br>
           <font color=red size = 5px>{{ errorMessage }}</font>
           <font color=green size = 5px>{{ successMessage }}</font>
+        </div>
         </fieldset>
         </form>
 </div>

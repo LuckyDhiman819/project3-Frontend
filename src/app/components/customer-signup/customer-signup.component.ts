@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-customer-signup',
@@ -16,7 +17,7 @@ export class CustomerSignupComponent implements OnInit {
   confirm_password :String = "";
   Id?:number;
 
-  constructor(public formBuilder:FormBuilder,public router: Router,public activatedRoute: ActivatedRoute) { }
+  constructor(public formBuilder:FormBuilder,public router: Router,public activatedRoute: ActivatedRoute, public customerService:CustomerService) { }
 
   ngOnInit(): void {
     this.Id = this.activatedRoute.snapshot.params['Id'];
@@ -41,6 +42,16 @@ export class CustomerSignupComponent implements OnInit {
   saveCustomer(){
     console.log(this.customerSignUpForm.value)
 
+    this.customerService.customerSignup(this.customerSignUpForm?.value)
+      .subscribe(
+        response => {
+          console.log(response);
+          console.log(this.customerSignUpForm.value);
+          console.log("SignUp Successfull");
+        },
+        error => {
+          console.log(error);
+        })
   }
 
   passwordMatch(password:String, confirm_password:String) {
