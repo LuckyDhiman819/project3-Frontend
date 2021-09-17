@@ -52,21 +52,21 @@ export class CustomerService {
     return throwError(errorMessage);
   }
 
-  //http://localhost:9090/customer
+  //http://localhost:9091/customer
   customerSignup(customer: Customer): Observable<String> {
     return this.httpClient.post<String>(customerURL, customer).pipe(
       retry(0),
       catchError(this.errorHandler)
     );
   }
-  //http://localhost:9090/customer/Ketan123/123456
+  //http://localhost:9091/customer/Ketan123/123456
   customerLogin(customerUserName: String, password: string): Observable<Customer> {
     return this.httpClient.get<Customer>(`${customerURL}/${customerUserName}/${password}`).pipe(
       retry(0),
       catchError(this.errorHandler)
     )
   }
-  //http://localhost:9090/customer/Ketan123
+  //http://localhost:9091/customer/Ketan123
   getCustomer(customerUserName: String): Observable<Customer> {
     return this.httpClient.get<Customer>(`${customerURL}/${customerUserName}`).pipe(
       retry(0),
@@ -133,7 +133,7 @@ export class CustomerService {
       )
   }
 
-  //http://localhost:9090/customer/viewBookingHistory/Ketan123
+  //http://localhost:9091/customer/viewBookingHistory/Ketan123
   viewBookingHistory(customerUserName: String): Observable<Booking[]> {
     return this.httpClient.get<Booking[]>(`${customerURL}/viewBookingHistory/${customerUserName}`).pipe(
       retry(0),
@@ -141,7 +141,7 @@ export class CustomerService {
     )
   }
 
-  //http://localhost:9091/patient/addPickAndDrop
+  //http://localhost:9091/customer/addPickAndDrop
   updateBooking(bookingId: number): Observable<Booking> {
     return this.httpClient.put<Booking>(`${customerURL}/updatePickAndDrop/${bookingId}`, this.httpOptions)
       .pipe(
@@ -150,7 +150,7 @@ export class CustomerService {
       )
   }
 
-  //http://localhost:9091/patient/cancelBooking/bookingId
+  //http://localhost:9091/customer/cancelBooking/bookingId
   cancelBooking(bookingId: number): Observable<Booking> {
     return this.httpClient.delete<Booking>(`${customerURL}/cancelBooking/${bookingId}`, this.httpOptions)
       .pipe(
