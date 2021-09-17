@@ -7,7 +7,9 @@ import { Customer } from '../models/customer';
 import { ForgetPassword } from '../models/forget-password';
 import { PickupAndDrop } from '../models/pickup-and-drop';
 import { Booking } from '../models/booking';
+
 const customerURL = "http://localhost:9091/customer";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -158,9 +160,5 @@ export class CustomerService {
         catchError(this.errorHandler)
       )
   }
-
-
-
-
 
 }

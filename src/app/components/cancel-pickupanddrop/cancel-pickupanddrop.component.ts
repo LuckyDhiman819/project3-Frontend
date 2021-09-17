@@ -4,31 +4,31 @@ import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
-  selector: 'app-cancel-booking',
-  templateUrl: './cancel-booking.component.html',
-  styleUrls: ['./cancel-booking.component.css']
+  selector: 'app-cancel-pickupanddrop',
+  templateUrl: './cancel-pickupanddrop.component.html',
+  styleUrls: ['./cancel-pickupanddrop.component.css']
 })
-export class CancelBookingComponent implements OnInit {
-  cancelBooking: FormGroup;
+export class CancelPickupanddropComponent implements OnInit {
+  cancelPickupAndDrop: FormGroup;
   errorMessage?:String;
-  bookingId? : number;
+  pickupAndDropId? : number;
 
   constructor(public formBuilder:FormBuilder, public router:Router,public customerService:CustomerService) { 
   }
 
   ngOnInit(): void {
-    this.cancelBooking = this.formBuilder.group({
-      bookingId : ['', Validators.required],
+    this.cancelPickupAndDrop = this.formBuilder.group({
+      pickupAndDropId : ['', Validators.required],
       customerUserName : ['', Validators.required],
       reason : ['', Validators.required]
     })
 
   }
-  sendCancelBooking(data: any){
-    console.log(this.cancelBooking?.value);
-    console.log(data.bookingId);
+  sendCancelPickupAndDrop(data: any){
+    console.log(this.cancelPickupAndDrop?.value);
+    console.log(data.pickupAndDropId);
   
-    this.customerService.cancelBooking(data.bookingId)
+    this.customerService.cancelPickAndDrop(data.pickupAndDropId)
       .subscribe(
         response => {
           console.log(response);
@@ -39,11 +39,8 @@ export class CancelBookingComponent implements OnInit {
           console.log(error);
         });
   }
-
   Back(){
     //this.router.navigate([""])
   }
-
-
 
 }
