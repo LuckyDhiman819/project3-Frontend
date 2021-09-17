@@ -78,7 +78,7 @@ export class CustomerService {
 
 
   //http://localhost:9091/patient/editProfile/ketan123
-  editProfile(customer: Customer, customerUserName: string): Observable<Customer> {
+  editProfile(customer: Customer, customerUserName: String): Observable<Customer> {
     return this.httpClient.put<Customer>(`${customerURL}/updateProfile/${customerUserName}`, customer).pipe(
       retry(0),
       catchError(this.errorHandler)
@@ -102,8 +102,8 @@ export class CustomerService {
       )
   }
   //http://localhost:9091/patient/addPickAndDrop
-  updatePickAndDrop(pickAndDropId: number): Observable<PickupAndDrop> {
-    return this.httpClient.put<PickupAndDrop>(`${customerURL}/updatePickAndDrop/${pickAndDropId}`, this.httpOptions)
+  updatePickAndDrop(pickAndDrop:PickupAndDrop,pickAndDropId: number): Observable<PickupAndDrop> {
+    return this.httpClient.put<PickupAndDrop>(`${customerURL}/updatePickAndDrop/${pickAndDropId}`, pickAndDrop, this.httpOptions)
       .pipe(
         retry(0),
         catchError(this.errorHandler)
@@ -143,9 +143,17 @@ export class CustomerService {
     )
   }
 
+  //http://localhost:9091/customer/viewBookingByRoomId/Ketan123
+  viewBookingById(bookingId: number): Observable<Booking> {
+    return this.httpClient.get<Booking>(`${customerURL}/viewBookingByRoomId/${bookingId}`).pipe(
+      retry(0),
+      catchError(this.errorHandler)
+    )
+  }
+
   //http://localhost:9091/customer/addPickAndDrop
-  updateBooking(bookingId: number): Observable<Booking> {
-    return this.httpClient.put<Booking>(`${customerURL}/updatePickAndDrop/${bookingId}`, this.httpOptions)
+  updateBooking(booking:Booking, bookingId: number): Observable<Booking> {
+    return this.httpClient.put<Booking>(`${customerURL}/updateBooking/${bookingId}`, booking, this.httpOptions)
       .pipe(
         retry(0),
         catchError(this.errorHandler)
