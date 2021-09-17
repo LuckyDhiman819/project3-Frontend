@@ -15,11 +15,15 @@ import { BlogsComponent } from './components/blogs/blogs.component';
 import { ElementsComponent } from './components/elements/elements.component';
 import { ConactComponent } from './components/conact/conact.component';
 import { AboutComponent } from './components/about/about.component';
+
+import { PickAndDropComponent } from './components/pick-and-drop/pick-and-drop.component';
+
 import { ViewBookingHistoryComponent } from './components/view-booking-history/view-booking-history.component';
 import { CustomerSignupComponent } from './components/customer-signup/customer-signup.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerBookingFormComponent } from './components/customer-booking-form/customer-booking-form.component';
 import { CustomerloginComponent } from './components/customerlogin/customerlogin.component';
+
 
 
 @NgModule({
@@ -33,18 +37,22 @@ import { CustomerloginComponent } from './components/customerlogin/customerlogin
     ElementsComponent,
     ConactComponent,
     AboutComponent,
+    PickAndDropComponent,
     CustomerloginComponent,
     ViewBookingHistoryComponent,
     CustomerSignupComponent,
     CustomerBookingFormComponent,
+
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
+
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
