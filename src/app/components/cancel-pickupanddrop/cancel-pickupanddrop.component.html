@@ -1,21 +1,22 @@
 <app-navbar></app-navbar>
 <div class="bradcam_area breadcam_bg_1">
-    <h3 style="color: rgb(240, 236, 11);"><b>Cancel Booking</b></h3>
+    <h3 style="color: rgb(240, 236, 11);"><b>Cancel Pickup And Drop</b></h3>
 
     <div class="main" align="center">
         <br>
         <div class="container">
-            <form novalidate [formGroup]="cancelBooking" #user="ngForm" (ngSubmit)="sendCancelBooking(user.value)">
+            <form novalidate [formGroup]="cancelPickupAndDrop" #user="ngForm"
+                (ngSubmit)="sendCancelPickupAndDrop(user.value)">
                 <fieldset>
                     <div class="form-group"><br>
                         <label>
-                            <h4><b style="color:white ; font-size:25px; font-weight: bold;">Booking Id</b></h4>
+                            <h4><b style="color:white ; font-size:25px; font-weight: bold;">Pickup And Drop Id</b></h4>
                         </label>
-                        <input type="number" class="form-control" formControlName="bookingId"
-                            placeholder="Enter Booking ID" ngModel>
-                        <div class="alert alert-danger" *ngIf="cancelBooking?.get('bookingId')?.hasError('required') &&
-                         cancelBooking.get('bookingId')?.dirty">
-                            Booking ID is Required
+                        <input type="number" class="form-control" formControlName="pickupAndDropId"
+                            placeholder="Enter Pickup And Drop ID" ngModel>
+                        <div class="alert alert-danger" *ngIf="cancelPickupAndDrop?.get('pickupAndDropId')?.hasError('required') &&
+                         cancelPickupAndDrop.get('pickupAndDropId')?.dirty">
+                            Pickup And Drop ID is Required
                         </div>
                         <br>
                     </div>
@@ -25,8 +26,8 @@
                         </label>
                         <input type="text" class="form-control" formControlName="customerUserName"
                             placeholder="Enter Customer Name">
-                        <div class="alert alert-danger" *ngIf="cancelBooking?.get('customerUserName')?.hasError('required') &&
-                         cancelBooking.get('customerUserName')?.dirty">
+                        <div class="alert alert-danger" *ngIf="cancelPickupAndDrop?.get('customerUserName')?.hasError('required') &&
+                         cancelPickupAndDrop.get('customerUserName')?.dirty">
                             customer name is Required
                         </div>
                         <br>
@@ -37,8 +38,8 @@
                         </label>
                         <textarea type="text" id="form8" placeholder="Please enter a valid reason"
                             class="md-textarea form-control" formControlName="reason" mdbInput></textarea>
-                        <div class="alert alert-danger" *ngIf="cancelBooking?.get('reason')?.hasError('required') &&
-                         cancelBooking.get('reason')?.dirty">
+                        <div class="alert alert-danger" *ngIf="cancelPickupAndDrop?.get('reason')?.hasError('required') &&
+                         cancelPickupAndDrop.get('reason')?.dirty">
                             Reason is Required
                         </div>
                         <br>
@@ -46,7 +47,7 @@
                 </fieldset>
             </form>
             <button type="submit" class="btn btn-danger btn-lg"
-                (click)="sendCancelBooking(user.value)">Submit</button>&nbsp;
+                (click)="sendCancelPickupAndDrop(user.value)">Submit</button>&nbsp;
             &nbsp;
             <button class="btn btn-dark btn-lg" (click)="Back()">Back</button>
         </div>
@@ -54,4 +55,4 @@
 
 
 </div>
-<app-footer></app-footer>v
+<app-footer></app-footer>

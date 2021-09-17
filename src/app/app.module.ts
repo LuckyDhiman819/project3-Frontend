@@ -24,6 +24,8 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerBookingFormComponent } from './components/customer-booking-form/customer-booking-form.component';
 import { CustomerloginComponent } from './components/customerlogin/customerlogin.component';
 import { CancelBookingComponent } from './components/cancel-booking/cancel-booking.component';
+import { CancelPickupanddropComponent } from './components/cancel-pickupanddrop/cancel-pickupanddrop.component';
+import { UpdatePickupanddropComponent } from './components/update-pickupanddrop/update-pickupanddrop.component';
 
 
 
@@ -44,6 +46,8 @@ import { CancelBookingComponent } from './components/cancel-booking/cancel-booki
     CustomerSignupComponent,
     CustomerBookingFormComponent,
     CancelBookingComponent,
+    CancelPickupanddropComponent,
+    UpdatePickupanddropComponent,
 
   ],
   imports: [

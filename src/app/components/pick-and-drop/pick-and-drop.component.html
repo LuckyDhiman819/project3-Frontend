@@ -21,10 +21,11 @@
       <div class="form-group col-md-4"></div>
       <div class="form-group col-md-4">
         <label style="font-weight: bold; font-size: 20px; color: black;">Transport</label>
-        <input type="text" formControlName="transport" style="color:black;" class="form-control border border-primary"
-          [ngClass]="{ 'is-invalid': submitted && f.transport.errors }" />
-        <div *ngIf="submitted && f.transport.errors" class="invalid-feedback">
-          <div *ngIf="f.transport.errors.required">transport is required</div>
+        <input type="text" formControlName="typeOfTransport" style="color:black;"
+          class="form-control border border-primary"
+          [ngClass]="{ 'is-invalid': submitted && f.typeOfTransport.errors }" />
+        <div *ngIf="submitted && f.typeOfTransport.errors" class="invalid-feedback">
+          <div *ngIf="f.typeOfTransport.errors.required">transport is required</div>
         </div>
       </div>
     </div>
@@ -44,10 +45,11 @@
       <div class="form-group col-md-4"></div>
       <div class="form-group col-md-4">
         <label style="font-weight: bold; font-size: 20px; color: black;">Number of Passenger</label>
-        <input type="number" formControlName="passengers" style="color:black;"
-          class="form-control border border-primary" [ngClass]="{ 'is-invalid': submitted && f.passengers.errors }" />
-        <div *ngIf="submitted && f.passengers.errors" class="invalid-feedback">
-          <div *ngIf="f.passengers.errors.required">Passengers is required</div>
+        <input type="number" formControlName="numberOfPassenger" style="color:black;"
+          class="form-control border border-primary"
+          [ngClass]="{ 'is-invalid': submitted && f.numberOfPassenger.errors }" />
+        <div *ngIf="submitted && f.numberOfPassenger.errors" class="invalid-feedback">
+          <div *ngIf="f.numberOfPassenger.errors.required">Passengers is required</div>
         </div>
       </div>
     </div>
@@ -114,134 +116,3 @@
 
 
 <app-footer></app-footer>
-<!-- <app-navbar></app-navbar>
-
-<div class="bradcam_area breadcam_bg_1">
-    <h3>Pick and Drop</h3>
-
-<br>
-<div class="container">
-    <form [FormGroup]="PickDropForm" (ngSubmit)="onSubmit()">
-        <fieldset>
-            <div class="form-group row">
-                <div class="form-group col-md-4 col-mb-5"></div>
-                <div class="form-group col-md-5 col-mb-6">
-                    <div class="form-group">
-                        <label for="pickDropId" style="font-weight: bold; font-style: 'Arial Black'; font-size: 20px;">Pick and Drop Id</label>
-                        <input type="number" class="form-control text-dark" [ngClass]="{'is-invalid':submitted && f.pickDropId.errors}" style="font-weight: bold; background-color: #b1e2ee;" formControlName="pickDropId" name="pickDropId"
-                            id="pickDropId">
-                        <div class="alert alert-danger">
-                            Pick And Drop Id is required
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="form-group col-md-4 col-mb-5"></div>
-                <div class="form-group col-md-5 col-mb-6">
-
-                    <div class="form-group">
-                        <label for="location" style="font-weight: bold; font-style: 'Arial Black'; font-size: 20px;">Location</label>
-                        <input type="text" class="form-control text-dark"  [ngClass]="{'is-invalid':submitted && f.location.errors}" style="font-weight: bold; background-color: #b1e2ee;" formControlName="location" name="location"
-                            id="location">
-                     <div class="alert alert-danger">
-                            Location is required
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="form-group col-md-4 col-mb-5"></div>
-                <div class="form-group col-md-5 col-mb-6">
-
-                    <div class="form-group">
-                        <label for="transport" style="font-weight: bold; font-style: 'Arial Black'; font-size: 20px;">Type Of Transport </label>
-                        <input type="text" class="form-control text-dark"  [ngClass]="{'is-invalid':submitted && f.transport.errors}" style="font-weight: bold; background-color: #b1e2ee;" formControlName="transport" name="transport"
-                            id="transport">
-                        <div class="alert alert-danger">
-                            Transport is required
-                        </div> 
-                       
-                    </div>
-                </div>
-            </div>
-
-
-             <div class="form-group row">
-                <div class="form-group col-md-4 col-mb-5"></div>
-                <div class="form-group col-md-5 col-mb-6">
-
-                    <div class="form-group">
-                        <label for="date" style="font-weight: bold; font-style: 'Arial Black'; font-size: 20px;">Date </label>
-                        <input type="date" class="form-control text-dark" style="font-weight: bold; background-color: #b1e2ee;" formControlName="date" name="date" id="date">
-                        <div class="alert alert-danger"
-                            *ngIf="PickDropForm.get('date').hasError('required') && PickDropForm.get('date').dirty">
-                            Date is required
-                        </div>
-                    </div>
-                </div>
-            </div>  
-
-            <div class="form-group row">
-                <div class="form-group col-md-4 col-mb-5"></div>
-                <div class="form-group col-md-5 col-mb-6">
-
-                    <div class="form-group">
-                        <label for="time" style="font-weight: bold; font-style: 'Arial Black'; font-size: 20px;">Time</label>
-                        <input type="time" class="form-control text-dark"  [ngClass]="{'is-invalid':submitted && f.time.errors}" style="font-weight: bold; background-color: #b1e2ee;" formControlName="time" name="time" id="time">
-                        <div class="alert alert-danger">
-                            Time is required
-                        </div> 
-                    </div>
-                </div>
-            </div>
-            
-            
-            <div class="form-group row">
-
-            <div class="form-group col-md-4 col-mb-5"></div>
-            <div class="form-group col-md-5 col-mb-6">
-                <div class="form-group">
-                    <label for="passengers" style="font-weight: bold; font-style: 'Arial Black'; font-size: 20px;">Number Of Passengers</label>
-                    <input type="number" class="form-control text-dark"  [ngClass]="{'is-invalid':submitted && f.Passengers.errors}" style="font-weight: bold; background-color: #b1e2ee;" formControlName="passengers" name="passengers"
-                        id="passengers">
-                     <div class="alert alert-danger">
-                        Please enter the Number of Passengers
-                    </div> 
-                    
-             </div>
-            </div>
-            </div>
-
-
-           
-
-        </fieldset>
-        <p style="color: green; text-align: center; font-weight: bold; font-size: 20px; font-style: Arial;"></p>
-        <div class="form-group row">
-            <div class="form-group col-md-4 col-mb-5"></div>
-            <div class="form-group col-md-5 buttons" align=center>
-                <button type="submit" class="btn-lg btn-success" [disabled]="">
-                    Submit</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="reset" class="btn-lg btn-info">Clear</button>
-            </div>
-        </div>
-    </form>
-    <br>
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-
- 
-
-
-<app-footer></app-footer> -->
