@@ -16,6 +16,11 @@ import { ElementsComponent } from './components/elements/elements.component';
 import { ConactComponent } from './components/conact/conact.component';
 import { AboutComponent } from './components/about/about.component';
 
+import { EditCustomerComponent } from './components/edit-customer/edit-customer.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { EditBookingComponent } from './components/edit-booking/edit-booking.component';
+
+
 import { PickAndDropComponent } from './components/pick-and-drop/pick-and-drop.component';
 
 import { ViewBookingHistoryComponent } from './components/view-booking-history/view-booking-history.component';
@@ -25,7 +30,6 @@ import { CustomerBookingFormComponent } from './components/customer-booking-form
 import { CustomerloginComponent } from './components/customerlogin/customerlogin.component';
 import { CancelBookingComponent } from './components/cancel-booking/cancel-booking.component';
 import { BillingComponent } from './components/billing/billing.component';
-
 
 
 
@@ -40,6 +44,9 @@ import { BillingComponent } from './components/billing/billing.component';
     ElementsComponent,
     ConactComponent,
     AboutComponent,
+    EditCustomerComponent,
+    UpdatePasswordComponent,
+    EditBookingComponent,
     PickAndDropComponent,
     CustomerloginComponent,
     ViewBookingHistoryComponent,
@@ -47,13 +54,11 @@ import { BillingComponent } from './components/billing/billing.component';
     CustomerBookingFormComponent,
     CancelBookingComponent,
     BillingComponent,
-
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule
