@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-row">
+        <div class="form-row" id = "display1">
             <div class="form-group col-md-4"></div>
             <div class="form-group col-md-4">
                 <label style="font-weight: bold; font-size: 20px; color: black;">Transport</label>
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="form-row">
+        <div class="form-row" id = "display2">
             <div class="form-group col-md-4"></div>
             <div class="form-group col-md-4">
                 <label style="font-weight: bold; font-size: 20px; color: black;">Time</label>
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-row">
+        <div class="form-row" id = "display3">
             <div class="form-group col-md-4"></div>
             <div class="form-group col-md-4">
                 <label style="font-weight: bold; font-size: 20px; color: black;">Number of Passenger</label>
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-row">
+        <div class="form-row" id = "display4">
             <div class="form-group col-md-4"></div>
             <div class="form-group col-md-4">
                 <label style="font-weight: bold; font-size: 20px; color: black;">Location</label>
@@ -73,14 +73,16 @@
         </div>
 
         <div class="text-center">
-            <button class="btn btn-primary btn-lg mr-1">Edit</button> &nbsp;
-            <button class="btn btn-success btn-lg mr-1">Submit</button> &nbsp;
-            <button class="btn btn-secondary btn-lg" type="reset" (click)="onReset()">Clear</button>
+            <br>
+            <button type="submit" class="btn btn-success" *ngIf="details" (click)="readOnly()">Save</button>
+
         </div>
-
-
+        <br>
+        
+        
     </form>
-
+    <button class="btn btn-primary" (click)="show()">Edit</button> &nbsp; &nbsp;
+    <button class="btn btn-dark" (click)="Back()">Back</button><br>
 </div>
 
 

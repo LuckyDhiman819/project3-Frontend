@@ -14,6 +14,11 @@ export class UpdatePickupanddropComponent implements OnInit {
   successMessage?: string;
    PickDropForm:FormGroup;
    submitted=false;
+   details = false;
+  lable = "Edit";
+  readonly = true;
+  Id?:number;
+  SuccessMsg?:String;
 
   constructor(private formBuilder:FormBuilder, public router:Router,public customerService:CustomerService ) { }
 
@@ -26,6 +31,11 @@ export class UpdatePickupanddropComponent implements OnInit {
       location: ['', Validators.required],   
 
        });
+
+       document.getElementById("display1").style.display = "none";
+    document.getElementById("display2").style.display = "none";
+    document.getElementById("display3").style.display = "none";
+    document.getElementById("display4").style.display = "none";
   }
 
   onSubmit(){
@@ -54,4 +64,27 @@ export class UpdatePickupanddropComponent implements OnInit {
     this.submitted = false;
     this.PickDropForm.reset();
   }
+
+  show(){
+    this.details = true;  
+    this.readonly = false;
+    document.getElementById("display1").style.display = "flex";
+    document.getElementById("display2").style.display = "flex";
+    document.getElementById("display3").style.display = "flex";
+    document.getElementById("display4").style.display = "flex";
+
+  }
+  readOnly(){
+    this.readonly = true;
+    document.getElementById("display1").style.display = "none";
+    document.getElementById("display2").style.display = "none";
+    document.getElementById("display3").style.display = "none";
+    document.getElementById("display4").style.display = "none";
+
+  }
+  Back(){
+
+  }
+
+
 }
