@@ -15,6 +15,7 @@ export class EditCustomerComponent implements OnInit {
   
   errMessage : string = "";
   message?:String;
+  customerUserName:String = "ketan123";
   customerEditForm !: FormGroup;
   adminId?:number;
   
@@ -24,7 +25,7 @@ export class EditCustomerComponent implements OnInit {
   lable = "Edit";
   readonly = true;
   Id?:number;
-  SuccessMsg?:String;
+  SuccessMsg?:String
 // public activatedRoute:ActivatedRoute
 // this.Id = this.activatedRoute.snapshot.params['Id'];
 
@@ -66,41 +67,40 @@ export class EditCustomerComponent implements OnInit {
 
   getProfile(){
     // this.adminId = this.activatedRoute.snapshot.params['adminId'];
-    // this.adminServices.getAdminById(this.Id)
-    // .subscribe(data => {
-    //   this.admin = data
-    //   console.log(this.admin, "ggggggggggggggggg"),
-    this.customerEditForm = this.formBuilder.group({
-      customerUserName : ['', [Validators.required, Validators.minLength(5)]],
-      customerName : ['',[Validators.required, Validators.minLength(5)]],     
-      email : ['',[Validators.required,Validators.email]],
-      gender : ['', Validators.required],
-      mobileNumber : ['', Validators.required],
-      age : ['', Validators.required],
-      city : ['', Validators.required],
-      state : ['', Validators.required],
-      country : ['', Validators.required],
-      idProof : ['', Validators.required]
-    })
-    // },
-    //   error => console.log(error)
-    // )
-  }
-
+    this.customerServices.getCustomer(this.customerUserName).subscribe(data => {
+      // console.log(data);
+      this.customer = data;
+      console.log(this.customer.customerUserName, this.customerUserName)
+      this.customerEditForm = this.formBuilder.group({
+        customerUserName : [this.customer.customerUserName,Validators.required],
+        customerName : [this.customer.customerName,[Validators.required, Validators.minLength(5)]],     
+        email : [this.customer.email,[Validators.required,Validators.email]],
+        gender : [this.customer.gender, Validators.required],
+        mobileNumber : [this.customer.mobileNumber, Validators.required],
+        age : [this.customer.age, Validators.required],
+        city : [this.customer.city, Validators.required],
+        state : [this.customer.state, Validators.required],
+        country : [this.customer.country, Validators.required]
+      })
+    },
+      error => console.log(error)
+    )
+    }
+    
   editCustomer(){
-    // console.log(this.adminEditForm.value)
-    // this.adminServices.editProfile(this.adminEditForm.value,this.Id)
-    //     .subscribe(
-    //       response => {
-    //         console.log(response);
-    //         console.log("#######Updated successfully and navigating");
-    //         this.SuccessMsg = "Details Update Successfully.....";
-    //         // this.router.navigate(['patientDashBoard'])
-    //       },
-    //       error => {
-    //         this.errMessage = "Data not saved"
-    //         console.log(error);
-    //       });
+    console.log(this.customerEditForm.value)
+    this.customerServices.editProfile(this.customerEditForm.value, this.customerUserName)
+    .subscribe(
+      response => {
+        console.log(response);
+        this.SuccessMsg = "Details Update Successfully.....";
+        console.log("#######Updated successfully");
+            // this.router.navigate(['patientDashBoard'])
+          },
+          error => {
+            this.errMessage = "Data not saved"
+            console.log(error);
+          });
   }
 
 forgetPassword(){

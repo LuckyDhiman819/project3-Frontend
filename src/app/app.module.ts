@@ -34,6 +34,7 @@ import { CancelPickupanddropComponent } from './components/cancel-pickupanddrop/
 import { UpdatePickupanddropComponent } from './components/update-pickupanddrop/update-pickupanddrop.component';
 
 import { BillingComponent } from './components/billing/billing.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { BillingComponent } from './components/billing/billing.component';
     CancelPickupanddropComponent,
     UpdatePickupanddropComponent,
     BillingComponent,
+    ContactUsComponent,
   ],
   imports: [
     FormsModule,
