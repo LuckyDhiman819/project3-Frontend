@@ -13,6 +13,7 @@ import { EditBookingComponent } from './components/edit-booking/edit-booking.com
 import { EditCustomerComponent } from './components/edit-customer/edit-customer.component';
 import { HomeComponent } from './components/home/home.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
+import { TermAndConditionComponent } from './components/term-and-condition/term-and-condition.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import { UpdatePickupanddropComponent } from './components/update-pickupanddrop/update-pickupanddrop.component';
 import { ViewBookingHistoryComponent } from './components/view-booking-history/view-booking-history.component';
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path:"about",component: AboutComponent },
   { path:"contactUs",component: ContactUsComponent },
   { path:"blogs",component: BlogsComponent },
-
+  { path:"termAndCondition",component: TermAndConditionComponent },
+ 
   { path:"cancelBooking",component: CancelBookingComponent },
   { path:"editBooking",component: EditBookingComponent },
 
@@ -45,6 +47,7 @@ const routes: Routes = [
   { path:"updatePassword",component: UpdatePasswordComponent },
   
   { path:"viewBookingHistory",component: ViewBookingHistoryComponent }
+
 ];
 
 @NgModule({
