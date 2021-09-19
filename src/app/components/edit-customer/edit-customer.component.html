@@ -5,12 +5,23 @@
   <div class="container">
       <form novalidate [formGroup]="customerEditForm" (ngSubmit)="editCustomer()">
         <fieldset>
+
+          <div class="form-group" id = "dummy"><br>
+            <label>
+              <h4><b style="color:white">Customer User Name</b></h4>
+            </label>
+            <input type="text" class="form-control"  formControlName="customerUserName" placeholder="Enter Customer Name" required>
+            <div class="alert alert-danger" *ngIf="customerEditForm?.get('customerUserName')?.hasError('required') &&
+            customerEditForm.get('customerUserName')?.dirty">
+              customer name is Required
+            </div>
+          </div>
+            
           <div class="form-group"><br>
             <label>
               <h4><b style="color:white">Customer User Name</b></h4>
             </label>
-            <input type="text" class="form-control" [readonly]="readonly" formControlName="customerUserName"
-              placeholder="Enter Customer Name">
+            <input type="text" class="form-control" readonly formControlName="customerUserName" placeholder="Enter Customer Name" required>
             <div class="alert alert-danger" *ngIf="customerEditForm?.get('customerUserName')?.hasError('required') &&
             customerEditForm.get('customerUserName')?.dirty">
               customer name is Required
@@ -21,11 +32,11 @@
             <label ><h4 > <b style="color: white"> Customer Name</b></h4></label>  
             <input type="text" class="form-control" formControlName="customerName" required [readonly]="readonly" >
             <div class="alert alert-danger"
-              *ngIf="customerEditForm.get('customerName')?.hasError('required') && customerEditForm.get('customerName')?.dirty">
+              *ngIf="customerEditForm.get('customerName').hasError('required') && customerEditForm.get('customerName').dirty">
               Customer Name is Required
             </div>
             <div class="alert alert-danger"
-              *ngIf="customerEditForm.get('customerName')?.hasError('minlength') && customerEditForm.get('customerName')?.dirty">
+              *ngIf="customerEditForm.get('customerName').hasError('minlength') && customerEditForm.get('customerName').dirty">
               Please enter a character above 5
             </div>
   
