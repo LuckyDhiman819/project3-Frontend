@@ -65,11 +65,11 @@ export class EditBookingComponent implements OnInit {
   }
 
   show(){
-    this.details = true;  
-    this.readonly = false;
     this.customerServices.viewBookingById(103).subscribe(
       data=>{
-        console.log(data);
+      console.log(data);
+      this.details = true;  
+      this.readonly = false;
         this.booking = data;
         //  var dateTime1 = new Date(st).toISOString().replace(/T.+/, ' 00:00:00')
         this.bookongEditForm= this.formBuilder.group({
@@ -85,7 +85,7 @@ export class EditBookingComponent implements OnInit {
           checkOutDate : [this.booking.checkInDate,Validators.required],
           pickUpAndDrop : [this.booking.pickupAndDrop,Validators.required]
         })
-        document.getElementById("display1").style.display = "block";
+    document.getElementById("display1").style.display = "block";
     document.getElementById("display2").style.display = "block";
     document.getElementById("display3").style.display = "block";
     document.getElementById("display4").style.display = "block";

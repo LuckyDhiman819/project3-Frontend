@@ -110,6 +110,15 @@ export class CustomerService {
       )
   }
 
+  //http://localhost:9091/customer/getPickAndDrop/103
+  getPickAndDrop(pickupAndDropId: number): Observable<PickupAndDrop> {
+    return this.httpClient.get<PickupAndDrop>(`${customerURL}/getPickAndDrop/${pickupAndDropId}`).pipe(
+      retry(0),
+      catchError(this.errorHandler)
+    )
+  }
+
+
   //http://localhost:9091/patient/cancelPickAndDrop/pickAndDropId
   cancelPickAndDrop(pickupAndDropId: number): Observable<PickupAndDrop> {
     return this.httpClient.delete<PickupAndDrop>(`${customerURL}/cancelPickAndDrop/${pickupAndDropId}`, this.httpOptions)
