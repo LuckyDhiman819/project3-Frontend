@@ -15,8 +15,8 @@ export class EditCustomerComponent implements OnInit {
   
   errMessage : string = "";
   message?:String;
-  customerUserName:String = "ketan123";
-  customerEditForm !: FormGroup;
+  name:String = "ketan123";
+  customerEditForm: FormGroup;
   adminId?:number;
   
   
@@ -38,6 +38,7 @@ export class EditCustomerComponent implements OnInit {
     //Model Driven FormBuilder
     this.Id = this.activatedRoute.snapshot.params['Id'];
     this.getProfile();
+    document.getElementById("dummy").style.display = "none"
 
     // this.employeeDetailService.getNewEmployee().subscribe(result => this.employees = result,err => this.errMessage =err)
   }
@@ -67,12 +68,12 @@ export class EditCustomerComponent implements OnInit {
 
   getProfile(){
     // this.adminId = this.activatedRoute.snapshot.params['adminId'];
-    this.customerServices.getCustomer(this.customerUserName).subscribe(data => {
+    this.customerServices.getCustomer(this.name).subscribe(data => {
       // console.log(data);
       this.customer = data;
-      console.log(this.customer.customerUserName, this.customerUserName)
+      console.log(this.customer.customerUserName, this.name)
       this.customerEditForm = this.formBuilder.group({
-        customerUserName : [this.customer.customerUserName,Validators.required],
+        customerUserName : [this.customer.customerUserName, Validators.required],
         customerName : [this.customer.customerName,[Validators.required, Validators.minLength(5)]],     
         email : [this.customer.email,[Validators.required,Validators.email]],
         gender : [this.customer.gender, Validators.required],
@@ -89,7 +90,7 @@ export class EditCustomerComponent implements OnInit {
     
   editCustomer(){
     console.log(this.customerEditForm.value)
-    this.customerServices.editProfile(this.customerEditForm.value, this.customerUserName)
+    this.customerServices.editProfile(this.customerEditForm.value, this.name)
     .subscribe(
       response => {
         console.log(response);

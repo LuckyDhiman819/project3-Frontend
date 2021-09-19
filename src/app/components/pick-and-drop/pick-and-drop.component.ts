@@ -21,7 +21,7 @@ export class PickAndDropComponent {
 
   ngOnInit() {
     this.PickDropForm=this.formBuilder.group({
-      pickupAndDropId:['',Validators.required] ,
+      pickupDropId:['',Validators.required] ,
       typeOfTransport:['',Validators.required] ,
       time:['',Validators.required] ,
       numberOfPassenger:['',Validators.required],
