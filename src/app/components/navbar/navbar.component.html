@@ -13,7 +13,8 @@
                                         <ul class="submenu">
                                             <li><a href="blog.html">About Us </a></li>
                                             <li><a href="single-blog.html">Contact Us</a></li>
-                                        </ul></li>
+                                        </ul>
+                                    </li>
                                     <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
                                             <li><a href="blog.html">blog</a></li>
@@ -64,10 +65,14 @@
                                 </ul>
                             </div>
                             <div class="book_btn d-none d-lg-block">
-                                <a class="popup-with-form" href="#test-form" style="border-radius: 15%;">Check Avaiability</a>
+                                <a class="popup-with-form" href="#test-form" style="border-radius: 15%;">Check
+                                    Availability</a>
                             </div>
                             <div class="book_btn d-none d-lg-block">
-                                <a class="popup-with-form" href="#test-form" style="border-radius: 15%;">Wallet</a>
+                                <button style="background-color: rgba(0, 0, 0, 0); border: none;" (click)="billing()">
+                                    <i class="fa fa-google-wallet fa-3x" style="color: white;"></i>
+                                </button>
+                                <!-- <input type="submit" (click)="billing()" value="Wallet"> -->
                             </div>
                         </div>
                     </div>
