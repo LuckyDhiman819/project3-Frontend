@@ -1,34 +1,31 @@
 <app-navbar></app-navbar>
 <div class="bradcam_area breadcam_bg_1">
   <h3>Pick and Drop</h3>
-
   <br>
 
-
   <form [formGroup]="PickDropForm" (ngSubmit)="onSubmit()">
-    <div class="form-row">
-      <div class="form-group col-md-4"></div>
-      <div class="form-group col-md-4">
-        <label style="font-weight: bold; font-size: 20px; color: black;">Pick and Drop Id</label>
-        <input type="number" style="color:black;" formControlName="pickupDropId" readonly 
-          class="form-control border border-primary" [ngClass]="{ 'is-invalid': submitted && f.pickupDropId.errors }">
-        <div *ngIf="submitted && f.pickupDropId.errors" class="invalid-feedback">
-          <div *ngIf="f.pickupDropId.errors.required">Pick and Drop Id is required</div>
-        </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-4"></div>
-      <div class="form-group col-md-4">
-        <label style="font-weight: bold; font-size: 20px; color: black;">Transport</label>
-        <input type="text" formControlName="typeOfTransport" style="color:black;"
-          class="form-control border border-primary"
-          [ngClass]="{ 'is-invalid': submitted && f.typeOfTransport.errors }" />
-        <div *ngIf="submitted && f.typeOfTransport.errors" class="invalid-feedback">
-          <div *ngIf="f.typeOfTransport.errors.required">transport is required</div>
-        </div>
-      </div>
-    </div>
+    
+    <div class="form-group">
+
+      <label for="roomType" class="mr-sm-2"><h4><b style="color:white">Transport : </b></h4></label>&nbsp;&nbsp;
+       
+      <input type="radio" name="roomSize" id="Cab" value="Cab" formControlName="typeOfTransport"required />
+        <span style="color:white" > &nbsp;Cab </span> &nbsp;&nbsp;
+      
+        <input type="radio" name="roomSize" id="Bus" value="Bus" formControlName="typeOfTransport" required />
+        <span style="color:white" >&nbsp;Bus</span>&nbsp;&nbsp;
+
+        <input type="radio" name="roomSize" id="Ship" value="Ship" formControlName="typeOfTransport" required />
+        <span style="color:white" > &nbsp;Ship</span>&nbsp;&nbsp;
+        
+        <input type="radio" name="roomSize" id="AirPlane" value="AirPlane" formControlName="typeOfTransport" required />
+        <span style="color:white" >&nbsp;Air-Plane</span>&nbsp;&nbsp;
+
+        <input type="radio" name="roomSize" id="Other" value="Other" formControlName="typeOfTransport" required />
+        <span style="color:white" >&nbsp;Other</span>&nbsp;&nbsp;
+        
+    </div><br>
+
 
     <div class="form-row">
       <div class="form-group col-md-4"></div>
@@ -36,43 +33,37 @@
         <label style="font-weight: bold; font-size: 20px; color: black;">Time</label>
         <input type="time" formControlName="time" style="color:black;" class="form-control border border-primary"
           [ngClass]="{ 'is-invalid': submitted && f.time.errors }" />
-        <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
-          <div *ngIf="f.time.errors.required">Time is required</div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-4"></div>
-          <div class="form-group col-md-4">
-            <label style="font-weight: bold; font-size: 20px; color: black;">Number of Passenger</label>
-            <input type="number" formControlName="passengers" style="color:black;"
-              class="form-control border border-primary"
-              [ngClass]="{ 'is-invalid': submitted && f.passengers.errors }" />
-            <div *ngIf="submitted && f.passengers.errors" class="invalid-feedback">
-              <div *ngIf="f.passengers.errors.required"> <b><font color = "red">Passengers is required</font></b> </div>
-            </div>
-          </div>
       </div>
     </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4"></div>
+      <div class="form-group col-md-4">
+        <label style="font-weight: bold; font-size: 20px; color: black;">Number of Passenger</label>
+        <input type="number" formControlName="numberOfPassenger" style="color:black;"
+          class="form-control border border-primary"
+          [ngClass]="{ 'is-invalid': submitted && f.numberOfPassenger.errors }" />
+        <div *ngIf="submitted && f.numberOfPassenger.errors" class="invalid-feedback">
+          <div *ngIf="f.numberOfPassenger.errors.required">
+            <b><font color = "red">Number of Passengers is required</font></b>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="form-row">
       <div class="form-group col-md-4"></div>
       <div class="form-group col-md-4">
         <label style="font-weight: bold; font-size: 20px; color: black;">Location</label>
-        <input type="text" formControlName="location" style="color:black;" class="form-control border border-primary"
+        <input type="text" formControlName="location" style="color:black;" placeholder="Please Enter your location" class="form-control border border-primary"
           [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
-        <!-- <select formControlName="location" class="form-control form-select form-select-lg border border-primary"
-              [ngClass]="{ 'is-invalid': submitted && f.location.errors }">
-              <option value="Air">Airport</option>
-              <option value="Bus">Bus Stand</option>
-              <option value="Rail" enabled selected>Railway Station</option>
-            </select> -->
-            <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
-              <div *ngIf="f.location.errors.required"> <b><font color = "red">Location is required</font></b> </div>
-            </div>
+        <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+          <div *ngIf="f.location.errors.required">
+            <b><font color = "red">Location is required</font></b>
           </div>
         </div>
-
-        <div class="text-center">
-          <button class="btn btn-primary mr-1">Submit</button>
-          <button class="btn btn-secondary" type="reset" (click)="onReset()">Clear</button>
+      </div>
+    </div>
 
     <div class="text-center">
       <button class="btn btn-primary btn-lg mr-1">Submit</button>

@@ -24,11 +24,10 @@
                         <label>
                             <h4><b style="color:white; font-size:25px; font-weight: bold;">Customer User Name</b></h4>
                         </label>
-                        <input type="text" class="form-control" formControlName="customerUserName"
-                            placeholder="Enter Customer Name">
+                        <input type="text" class="form-control" formControlName="customerUserName" placeholder="Enter Customer User Name">
                         <div class="alert alert-danger" *ngIf="cancelPickupAndDrop?.get('customerUserName')?.hasError('required') &&
                          cancelPickupAndDrop.get('customerUserName')?.dirty">
-                            customer name is Required
+                            Customer User Name is Required
                         </div>
                         <br>
                     </div>
