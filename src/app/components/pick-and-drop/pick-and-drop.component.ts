@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/services/customer.service';
 //import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
@@ -10,31 +12,42 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PickAndDropComponent {
 
+  errorMessage?: string;
+  successMessage?: string;
    PickDropForm:FormGroup;
    submitted=false;
 
-  constructor(private formBuilder:FormBuilder ) { }
+  constructor(private formBuilder:FormBuilder, public router:Router,public customerService:CustomerService ) { }
 
   ngOnInit() {
     this.PickDropForm=this.formBuilder.group({
-      pickDropId:['',Validators.required] ,
-      transport:['',Validators.required] ,
+      pickupDropId:['',Validators.required] ,
+      typeOfTransport:['',Validators.required] ,
       time:['',Validators.required] ,
-      passengers:['',Validators.required],
-      location: ['', Validators.required],      
-      title: ['', Validators.required]
+      numberOfPassenger:['',Validators.required],
+      location: ['', Validators.required],   
 
        });
   }
 
   onSubmit(){
       this.submitted=true;
-      // if(this.PickDropForm.invalid){
-      //   return;
-      // }
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.PickDropForm.value, null, 4));
-      console.log('Sucess!! \nPick and Drop Id - '+this.f.pickDropId.value + "\nLocation - " + this.f.location.value + "\nTransport - " + this.f.transport.value + "\nTime - " + this.f.time.value + "Number of Passengers - " + this.f.passengers.value + "Time - " + this.f.title.value);
-  }
+      console.log(this.PickDropForm.value)
+      console.log('Sucess!! '+ "\nLocation - " + this.f.location.value + "\nTransport - " + this.f.typeOfTransport.value + "\nTime - " + this.f.time.value + "\nNumber of Passengers - " + this.f.numberOfPassenger.value);
+      this.customerService.addPickAndDrop(this.PickDropForm.value)
+      .subscribe(
+          response => {
+            console.log(response);
+            // this.router.navigate([''])
+            this.successMessage = "Pickup And Drop added successfully"
+            console.log("#######Pickup And Drop Uploaded successfully ");
+          },
+          error => {
+            this.errorMessage = "Admit Form Cancel"
+            console.log("ERROR in save : " + error);
+          });
+  
+    }
   get f(){
     return this.PickDropForm.controls;
   }

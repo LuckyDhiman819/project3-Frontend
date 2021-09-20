@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-customerlogin',
@@ -13,7 +14,7 @@ customerLoginForm! : FormGroup;
   errorMessage?:String;
   adminId?:number;
 
-  constructor(public formBuilder:FormBuilder, public router:Router) { 
+  constructor(public formBuilder:FormBuilder, public router:Router,public customerService:CustomerService) { 
   }
 
   ngOnInit(): void {
@@ -24,9 +25,18 @@ customerLoginForm! : FormGroup;
   }
   customerLogin(){
     
-   
+    console.log(this.customerLoginForm.value)
+    this.customerService.customerLogin(this.customerLoginForm.get('customerUserName').value,this.customerLoginForm.get('password').value)
+    .subscribe(() => {
+      console.log("Login Successfully!!")
+      // this.router.navigate(["customerDashBoard", this.customerLoginForm.get('patientId').value]);
+    },error=>{
+      
+      this.errorMessage = "You Entered Incorrect Credentials"
+      console.log(error)
+    },
+    )
     
-    // this.employeeDetailService.createEmployee(this.employeeForm.value).subscribe();
   }
 
   login(){

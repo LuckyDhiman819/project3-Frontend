@@ -1,4 +1,5 @@
 export class Booking {
+    bookingId?:number;
     customerUserName?: String;
 	email?: String;
 	idProof?: String;

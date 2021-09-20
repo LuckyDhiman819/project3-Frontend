@@ -1,11 +1,6 @@
 <app-navbar></app-navbar>
 <div class="bradcam_area breadcam_bg_1">
-    <h3>Customer Login</h3>
-
-   
-   
-   
-
+      <h3 style="color: rgb(240, 236, 11);"><b>Customer Login</b></h3>
 <div class="loginForm">
     <div class="main">
         <br><h1 style="color:black"><b></b></h1>
@@ -27,32 +22,25 @@
                             <input type="password" name="password" id="password" placeholder="Entre Your Password" formControlName="password">
                             <div *ngIf="customerLoginForm.get('password')?.hasError('required') && customerLoginForm.get('password')?.dirty">
                                 <b><font color = "red">Password is Required</font></b> 
-                            </div>
-
-                        </div>
+                        <br>
                         <br>
                         <div class="btn-text-center">
-                            <button type="submit" class="btn btn-primary" [disabled]="!customerLoginForm.valid" (click) = "login()">Log-in</button> &nbsp;
-                                <button class="btn btn-warning" (click) = "sign_up()">Sign-Up</button> &nbsp;
-                                <button class="btn btn-danger" (click) = "forgetPassword()">Forget Password</button>&nbsp;
-                                <br><br>
-                                
-                                <button class="btn btn-dark" (click) = "back()">Back</button>&nbsp;
+                            <button type="submit" class="btn btn-primary" [disabled]="!customerLoginForm.valid"
+                                (click)="login()">Log-in</button> &nbsp;
+                            <button class="btn btn-warning btn-lg" (click)="sign_up()">Sign-Up</button> &nbsp;
+                            <button class="btn btn-danger btn-lg" (click)="forgetPassword()">Forget
+                                Password</button>&nbsp;
+                            <br><br>
+
+                            <button class="btn btn-dark btn-lg" (click)="back()">Back</button>&nbsp;
                         </div>
-                </fieldset>
-                <br>
-
-            </form>
-        
+                    </fieldset>
+                    <br>
+                </form>
+            </div>
         </div>
-        
-        </div>
-
-</div>
-
-
+    </div>
 </div>
 
 
 <app-footer></app-footer>
-

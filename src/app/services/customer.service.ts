@@ -7,7 +7,9 @@ import { Customer } from '../models/customer';
 import { ForgetPassword } from '../models/forget-password';
 import { PickupAndDrop } from '../models/pickup-and-drop';
 import { Booking } from '../models/booking';
+
 const customerURL = "http://localhost:9091/customer";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -52,21 +54,21 @@ export class CustomerService {
     return throwError(errorMessage);
   }
 
-  //http://localhost:9090/customer
+  //http://localhost:9091/customer
   customerSignup(customer: Customer): Observable<String> {
     return this.httpClient.post<String>(customerURL, customer).pipe(
       retry(0),
       catchError(this.errorHandler)
     );
   }
-  //http://localhost:9090/customer/Ketan123/123456
+  //http://localhost:9091/customer/Ketan123/123456
   customerLogin(customerUserName: String, password: string): Observable<Customer> {
     return this.httpClient.get<Customer>(`${customerURL}/${customerUserName}/${password}`).pipe(
       retry(0),
       catchError(this.errorHandler)
     )
   }
-  //http://localhost:9090/customer/Ketan123
+  //http://localhost:9091/customer/Ketan123
   getCustomer(customerUserName: String): Observable<Customer> {
     return this.httpClient.get<Customer>(`${customerURL}/${customerUserName}`).pipe(
       retry(0),
@@ -76,7 +78,7 @@ export class CustomerService {
 
 
   //http://localhost:9091/patient/editProfile/ketan123
-  editProfile(customer: Customer, customerUserName: string): Observable<Customer> {
+  editProfile(customer: Customer, customerUserName: String): Observable<Customer> {
     return this.httpClient.put<Customer>(`${customerURL}/updateProfile/${customerUserName}`, customer).pipe(
       retry(0),
       catchError(this.errorHandler)
@@ -100,13 +102,22 @@ export class CustomerService {
       )
   }
   //http://localhost:9091/patient/addPickAndDrop
-  updatePickAndDrop(pickAndDropId: number): Observable<PickupAndDrop> {
-    return this.httpClient.put<PickupAndDrop>(`${customerURL}/updatePickAndDrop/${pickAndDropId}`, this.httpOptions)
+  updatePickAndDrop(pickAndDrop:PickupAndDrop,pickAndDropId: number): Observable<PickupAndDrop> {
+    return this.httpClient.put<PickupAndDrop>(`${customerURL}/updatePickAndDrop/${pickAndDropId}`, pickAndDrop, this.httpOptions)
       .pipe(
         retry(0),
         catchError(this.errorHandler)
       )
   }
+
+  //http://localhost:9091/customer/getPickAndDrop/103
+  getPickAndDrop(pickupAndDropId: number): Observable<PickupAndDrop> {
+    return this.httpClient.get<PickupAndDrop>(`${customerURL}/getPickAndDrop/${pickupAndDropId}`).pipe(
+      retry(0),
+      catchError(this.errorHandler)
+    )
+  }
+
 
   //http://localhost:9091/patient/cancelPickAndDrop/pickAndDropId
   cancelPickAndDrop(pickupAndDropId: number): Observable<PickupAndDrop> {
@@ -133,7 +144,7 @@ export class CustomerService {
       )
   }
 
-  //http://localhost:9090/customer/viewBookingHistory/Ketan123
+  //http://localhost:9091/customer/viewBookingHistory/Ketan123
   viewBookingHistory(customerUserName: String): Observable<Booking[]> {
     return this.httpClient.get<Booking[]>(`${customerURL}/viewBookingHistory/${customerUserName}`).pipe(
       retry(0),
@@ -141,16 +152,24 @@ export class CustomerService {
     )
   }
 
-  //http://localhost:9091/patient/addPickAndDrop
-  updateBooking(bookingId: number): Observable<Booking> {
-    return this.httpClient.put<Booking>(`${customerURL}/updatePickAndDrop/${bookingId}`, this.httpOptions)
+  //http://localhost:9091/customer/viewBookingByRoomId/Ketan123
+  viewBookingById(bookingId: number): Observable<Booking> {
+    return this.httpClient.get<Booking>(`${customerURL}/viewBookingByRoomId/${bookingId}`).pipe(
+      retry(0),
+      catchError(this.errorHandler)
+    )
+  }
+
+  //http://localhost:9091/customer/addPickAndDrop
+  updateBooking(booking:Booking, bookingId: number): Observable<Booking> {
+    return this.httpClient.put<Booking>(`${customerURL}/updateBooking/${bookingId}`, booking, this.httpOptions)
       .pipe(
         retry(0),
         catchError(this.errorHandler)
       )
   }
 
-  //http://localhost:9091/patient/cancelBooking/bookingId
+  //http://localhost:9091/customer/cancelBooking/bookingId
   cancelBooking(bookingId: number): Observable<Booking> {
     return this.httpClient.delete<Booking>(`${customerURL}/cancelBooking/${bookingId}`, this.httpOptions)
       .pipe(
@@ -158,9 +177,5 @@ export class CustomerService {
         catchError(this.errorHandler)
       )
   }
-
-
-
-
 
 }
