@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router , ActivatedRoute} from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
 //import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -14,20 +14,43 @@ export class PickAndDropComponent {
 
   errorMessage?: string;
   successMessage?: string;
-   PickDropForm:FormGroup;
-   submitted=false;
+  PickDropForm:FormGroup;
+  submitted=false;
+  display = false
+  button1 = false
+  button2 = false
+  Id?:any;
+  userName?:String;
+  // public activatedRoute:ActivatedRoute
+  // this.Id = this.activatedRoute.snapshot.params['id'];
 
-  constructor(private formBuilder:FormBuilder, public router:Router,public customerService:CustomerService ) { }
+  constructor(public activatedRoute:ActivatedRoute, private formBuilder:FormBuilder, public router:Router,public customerService:CustomerService ) { }
 
   ngOnInit() {
+    this.userName = this.activatedRoute.snapshot.params['userName'];
+    this.Id = this.activatedRoute.snapshot.params['Id'];
+    if(this.Id == "-1"){
+      this.display = true;
+      this.button2 = true;
+      this.PickDropForm=this.formBuilder.group({
+        pickupDropId:['',Validators.required],
+        typeOfTransport:['',Validators.required] ,
+        time:['',Validators.required] ,
+        numberOfPassenger:['',Validators.required],
+        location: ['', Validators.required],   
+         });
+    }
+    else{
+      this.button1 = true
+    console.log(this.Id, this.userName);
     this.PickDropForm=this.formBuilder.group({
-      pickupDropId:['',Validators.required] ,
+      pickupDropId:[this.Id,Validators.required],
       typeOfTransport:['',Validators.required] ,
       time:['',Validators.required] ,
       numberOfPassenger:['',Validators.required],
       location: ['', Validators.required],   
-
        });
+      }
   }
 
   onSubmit(){
@@ -41,6 +64,7 @@ export class PickAndDropComponent {
             // this.router.navigate([''])
             this.successMessage = "Pickup And Drop added successfully"
             console.log("#######Pickup And Drop Uploaded successfully ");
+            this.router.navigate(["customerDashboard", this.userName]);
           },
           error => {
             this.errorMessage = "Admit Form Cancel"
@@ -54,6 +78,15 @@ export class PickAndDropComponent {
 
   onReset() {
     this.submitted = false;
-    this.PickDropForm.reset();
+    this.customerService.cancelBooking(this.Id).subscribe(
+      data=>{
+        console.log("delete successfully!!!", data);
+        this.router.navigate(["customerDashboard", this.userName]);
+      },
+      error=>console.log("error got")
+    )
+  }
+  Back(){
+    this.router.navigate(["customerDashboard", this.userName]);
   }
 }

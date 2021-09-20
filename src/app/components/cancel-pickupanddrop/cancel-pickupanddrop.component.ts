@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
@@ -12,11 +12,15 @@ export class CancelPickupanddropComponent implements OnInit {
   cancelPickupAndDrop: FormGroup;
   errorMessage?:String;
   pickupAndDropId? : number;
+  userName?:String;
+  // public activatedRoute:ActivatedRoute
+  // this.Id = this.activatedRoute.snapshot.params['id'];
 
-  constructor(public formBuilder:FormBuilder, public router:Router,public customerService:CustomerService) { 
+  constructor(public formBuilder:FormBuilder, public router:Router,public customerService:CustomerService, public activatedRoute:ActivatedRoute) { 
   }
 
   ngOnInit(): void {
+    this.userName = this.activatedRoute.snapshot.params['userName'];
     this.cancelPickupAndDrop = this.formBuilder.group({
       pickupAndDropId : ['', Validators.required],
       customerUserName : ['', Validators.required],
@@ -40,7 +44,7 @@ export class CancelPickupanddropComponent implements OnInit {
         });
   }
   Back(){
-    //this.router.navigate([""])
+    this.router.navigate(["customerDashboard", this.userName]);
   }
 
 }

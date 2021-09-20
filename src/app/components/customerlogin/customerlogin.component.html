@@ -17,10 +17,11 @@
                                 <label style="font-weight: bold; font-size: 20px; color: black;">Username </label>
                                 <input type="text" name="customerUserName" id="customerUserName"
                                     formControlName="customerUserName" style="color:black;"
-                                    class="form-control border border-primary" />
-                                <div class="alert alert-danger"
+                                    class="form-control border border-primary" placeholder="Entre your User Name" />
+                                <div class=""
                                     *ngIf="customerLoginForm.get('customerUserName')?.hasError('required') && customerLoginForm.get('customerUserName')?.dirty">
-                                    Customer Username is Required
+                                    <!-- Customer Username is Required -->
+                                    <!-- <b> <font color = "red">Customer Username is Required</font></b> -->
                                 </div>
 
                             </div>
@@ -31,10 +32,10 @@
                                 <i class="fa fa-key fa-lg"></i> &nbsp;
                                 <label style="font-weight: bold; font-size: 20px; color: black;">Password </label>
                                 <input type="password" name="password" id="password" formControlName="password"
-                                    style="color:black;" class="form-control border border-primary" />
-                                <div class="alert alert-danger"
+                                    style="color:black;" class="form-control border border-primary" placeholder="Entre Your Password"/>
+                                <div class=""
                                     *ngIf="customerLoginForm.get('password')?.hasError('required') && customerLoginForm.get('password')?.dirty">
-                                    Password is Required
+                                    <font color = "red">Password is Required</font>
                                 </div>
 
                             </div>
@@ -50,11 +51,11 @@
                                 Password</button>&nbsp;
                             <br><br>
 
-                            <button class="btn btn-dark btn-lg" (click)="back()">Back</button>&nbsp;
                         </div>
                     </fieldset>
                     <br>
                 </form>
+                <button class="btn btn-dark btn-lg" (click)="back()">Back</button>&nbsp;
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@ customerLoginForm! : FormGroup;
   ngOnInit(): void {
     this.customerLoginForm = this.formBuilder.group({
       customerUserName : ['', Validators.required],
-    password : ['', Validators.required]
+      password : ['', Validators.required]
     })
   }
   customerLogin(){
@@ -29,7 +29,7 @@ customerLoginForm! : FormGroup;
     this.customerService.customerLogin(this.customerLoginForm.get('customerUserName').value,this.customerLoginForm.get('password').value)
     .subscribe(() => {
       console.log("Login Successfully!!")
-      // this.router.navigate(["customerDashBoard", this.customerLoginForm.get('patientId').value]);
+      this.router.navigate(["customerDashboard", this.customerLoginForm.get('customerUserName').value]);
     },error=>{
       
       this.errorMessage = "You Entered Incorrect Credentials"
@@ -43,16 +43,16 @@ customerLoginForm! : FormGroup;
     // this.router.navigate(["adminDashBoard"])
   }
   sign_up(){
-    // this.router.navigate(["adminSignup", -1])
+    this.router.navigate(["customerSignUp", "-1"])
     
   }
   back(){
     
-    //this.router.navigate([""])
+    this.router.navigate([""]);
   }
 
   forgetPassword(){
-    //this.router.navigate(["adminForgetPassword", -1]);
+    this.router.navigate(["updatePassword", "-1"]);
   }
 
 }

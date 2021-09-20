@@ -16,8 +16,8 @@
             customer name is Required
           </div>
         </div>
-        <br>
         <div class="form-group"><br>
+          <br>
           <label>
             <h4><b style="color:white">Room Id</b></h4>
           </label>
@@ -28,8 +28,8 @@
             customer name is Required
           </div>
         </div>
-        <br>
         <div class="form-group display" id = "display1">
+          <br>
           <label for="roomType" class="mr-sm-2">
             <h4><b style="color:white">Id Proof : </b></h4>
           </label>
@@ -51,9 +51,9 @@
           <div class="alert alert-danger" *ngIf="bookongEditForm?.get('idProof')?.hasError('required') &&
                            bookongEditForm.get('idProof')?.dirty">
             Id Proof is Required
+            <br>
           </div>
         </div>
-        <br>
 
         <div class="form-group display" id = "display10">
           <label>
@@ -64,8 +64,8 @@
           <div class="alert alert-danger"
             *ngIf="bookongEditForm.get('email')?.hasError('required') && bookongEditForm.get('email')?.dirty">
             Email is Required
+          </div><br>
           </div>
-        </div><br>
 
         <div class="form-group display" id = "display9">
           <label for="roomType" class="mr-sm-2">
@@ -81,9 +81,9 @@
               <option value="Presedential suite">Presedential suite</option>
             </select>
           </div>
+          <br>
+          <br>
         </div><br>
-        <br>
-        <br>
 
         <div class="form-group display" id = "display8">
           <label>
@@ -94,8 +94,8 @@
           <div class="alert alert-danger"
             *ngIf="bookongEditForm.get('numberOfRoom')?.hasError('required') && bookongEditForm.get('numberOfRoom')?.dirty">
             This section is required
+          </div><br>
           </div>
-        </div><br>
 
         <div class="form-group display" id = "display7">
           <label>
@@ -186,7 +186,7 @@
     <br>
     <div>
       <button class="btn btn-primary" (click)="show()">Edit</button> &nbsp; &nbsp;
-      <button class="btn btn-danger" (click)="forgetPassword()">Cancel Booking</button> &nbsp; &nbsp;
+      <button class="btn btn-danger" (click)="cancleBooking()">Cancel Booking</button> &nbsp; &nbsp;
       <button class="btn btn-dark" (click)="Back()">Back</button><br>
 
     </div>

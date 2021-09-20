@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PickupAndDrop } from 'src/app/models/pickup-and-drop';
 import { CustomerService } from 'src/app/services/customer.service';
 
@@ -21,12 +21,16 @@ export class UpdatePickupanddropComponent implements OnInit {
   Id?:number = 103;
   SuccessMsg?:String;
   pickupAndDrop?:PickupAndDrop;
-
-  constructor(private formBuilder:FormBuilder, public router:Router,public customerService:CustomerService ) { }
+  userName?:String;
+  display = false
+  // public activatedRoute:ActivatedRoute
+  // this.userName = this.activatedRoute.snapshot.params['userName'];
+  constructor(private formBuilder:FormBuilder, public router:Router,public customerService:CustomerService, public activatedRoute:ActivatedRoute ) { }
 
   ngOnInit() {
+    this.userName = this.activatedRoute.snapshot.params['userName'];
     this.PickDropForm=this.formBuilder.group({
-      pickupAndDropId:['',Validators.required] ,
+      pickupDropId:['',Validators.required] ,
       typeOfTransport:['',Validators.required] ,
       time:['',Validators.required] ,
       numberOfPassenger:['',Validators.required],
@@ -34,17 +38,14 @@ export class UpdatePickupanddropComponent implements OnInit {
 
        });
 
-       document.getElementById("display1").style.display = "none";
-    document.getElementById("display2").style.display = "none";
-    document.getElementById("display3").style.display = "none";
-    document.getElementById("display4").style.display = "none";
+       
   }
 
   onSubmit(){
       this.submitted=true;
       console.log(this.PickDropForm.value)
-      console.log('Sucess!! '+ "\nLocation - " + this.f.location.value + "\nTransport - " + this.f.typeOfTransport.value + "\nTime - " + this.f.time.value + "\nNumber of Passengers - " + this.f.numberOfPassenger.value);
-      this.customerService.updatePickAndDrop(this.PickDropForm.value, 103)
+      // console.log('Sucess!! '+ "\nLocation - " + this.f.location.value + "\nTransport - " + this.f.typeOfTransport.value + "\nTime - " + this.f.time.value + "\nNumber of Passengers - " + this.f.numberOfPassenger.value);
+      this.customerService.updatePickAndDrop(this.PickDropForm.value, this.PickDropForm.value.pickupDropId)
       .subscribe(
           response => {
             console.log(response);
@@ -68,27 +69,22 @@ export class UpdatePickupanddropComponent implements OnInit {
   }
 
   show(){
-      
-    this.customerService.getPickAndDrop(this.Id).subscribe(
+      console.log(this.PickDropForm.value.pickupDropId)
+    this.customerService.getPickAndDrop(this.PickDropForm.value.pickupDropId).subscribe(
       data=>{
         console.log(data);
         this.pickupAndDrop = data;
         this.details = true;
-        
         this.readonly = false;
-    
+        this.display = true;
       this.PickDropForm=this.formBuilder.group({
-      
-      typeOfTransport:[this.pickupAndDrop.typeOfTransport,Validators.required] ,
-      time:[this.pickupAndDrop.time,Validators.required] ,
-      numberOfPassenger:[this.pickupAndDrop.numberOfPassenger,Validators.required],
-      location: [this.pickupAndDrop.location, Validators.required],   
-
+        pickupDropId:[this.pickupAndDrop.pickupDropId,Validators.required] ,
+        typeOfTransport:[this.pickupAndDrop.typeOfTransport,Validators.required],
+        time:[this.pickupAndDrop.time,Validators.required] ,
+        numberOfPassenger:[this.pickupAndDrop.numberOfPassenger,Validators.required],
+        location: [this.pickupAndDrop.location, Validators.required],   
        });
-    document.getElementById("display1").style.display = "flex";
-    document.getElementById("display2").style.display = "flex";
-    document.getElementById("display3").style.display = "flex";
-    document.getElementById("display4").style.display = "flex";
+       this.PickDropForm.reset
     
   },
   error => console.log(error)
@@ -96,14 +92,11 @@ export class UpdatePickupanddropComponent implements OnInit {
   }
   readOnly(){
     this.readonly = true;
-    document.getElementById("display1").style.display = "none";
-    document.getElementById("display2").style.display = "none";
-    document.getElementById("display3").style.display = "none";
-    document.getElementById("display4").style.display = "none";
+    this.display = false;
 
   }
   Back(){
-
+    this.router.navigate(["customerDashboard", this.userName]);
   }
 
 

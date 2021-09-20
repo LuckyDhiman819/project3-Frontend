@@ -24,6 +24,7 @@ export class EditBookingComponent implements OnInit {
   readonly = true;
   Id?:number;
   SuccessMsg?:String;
+  userName?:String;
 // public activatedRoute:ActivatedRoute
 // this.Id = this.activatedRoute.snapshot.params['Id'];
   booking?:Booking;
@@ -34,7 +35,7 @@ export class EditBookingComponent implements OnInit {
   ngOnInit(): void {
     // this.employees = this.employeeDetailService.getEmployee();
     //Model Driven FormBuilder
-    this.Id = this.activatedRoute.snapshot.params['Id'];
+    this.userName = this.activatedRoute.snapshot.params['userName'];
     this.getProfile();
     document.getElementById("display1").style.display = "none";
     document.getElementById("display2").style.display = "none";
@@ -65,7 +66,7 @@ export class EditBookingComponent implements OnInit {
   }
 
   show(){
-    this.customerServices.viewBookingById(103).subscribe(
+    this.customerServices.viewBookingById(this.bookongEditForm.value.bookingId).subscribe(
       data=>{
       console.log(data);
       this.details = true;  
@@ -120,7 +121,7 @@ export class EditBookingComponent implements OnInit {
   getProfile(){
     
     this.bookongEditForm= this.formBuilder.group({
-      customerUserName : ['',Validators.required],
+      customerUserName : [this.userName,Validators.required],
       bookingId : ['',Validators.required],
       idProof : ['',Validators.required],
       email : ['',[Validators.required,Validators.email]],
@@ -138,7 +139,7 @@ export class EditBookingComponent implements OnInit {
 
   updateBooking(){
     // console.log(this.adminEditForm.value)
-    this.customerServices.updateBooking(this.bookongEditForm.value, 103)
+    this.customerServices.updateBooking(this.bookongEditForm.value, this.bookongEditForm.value.bookingId)
         .subscribe(
           response => {
             console.log(response);
@@ -152,11 +153,12 @@ export class EditBookingComponent implements OnInit {
           });
   }
 
-forgetPassword(){
-  // this.router.navigate(["adminForgetPassword", this.Id]);
-}
+
 Back(){
-  // this.router.navigate(["adminDashBoard", this.Id]);
+  this.router.navigate(["customerDashboard", this.userName]);
+}
+cancleBooking(){
+  this.router.navigate(['cancelBooking',this.userName ]);
 }
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-customer-booking-form',
@@ -12,13 +13,14 @@ export class CustomerBookingFormComponent implements OnInit {
   bookingForm!: FormGroup;
   errorMessage?: string;
   successMessage?: string;
-  Id?:number;
+  Id?:any;
+  userName?:String;
   // public activatedRoute:ActivatedRoute
   // this.Id = this.activatedRoute.snapshot.params['id'];
-  constructor(public formBuilder:FormBuilder,public router: Router,public activatedRoute: ActivatedRoute) { }
+  constructor(public formBuilder:FormBuilder,public router: Router,public activatedRoute: ActivatedRoute, public customerService:CustomerService) { }
 
   ngOnInit(): void {
-    this.Id = this.activatedRoute.snapshot.params['id'];
+    this.userName = this.activatedRoute.snapshot.params['userName'];
     this.bookingForm= this.formBuilder.group({
       customerUserName : ['',Validators.required],
       idProof : ['',Validators.required],
@@ -37,9 +39,30 @@ export class CustomerBookingFormComponent implements OnInit {
   sendbookingForm(){
     console.log(this.bookingForm?.value);
 
+    this.customerService.bookingForm(this.bookingForm.value).subscribe(
+      data => {
+        this.Id = data;
+        console.log(this.Id);
+        if(this.bookingForm.value.pickUpAndDrop == "yes"){
+          this.router.navigate(["addPickAndDrop", this.userName, this.Id]);
+        }
+        else{
+          this.router.navigate(["addPickAndDrop", this.userName]);
+        }
+      }, 
+      error => {
+        this.errorMessage = "Admit Form Cancel"
+        console.log("ERROR in save : " + error);
+      });
+
+
   }
 
   Back(){
+    this.router.navigate(["customerDashboard", this.userName]);
+  }
+  next(){
+    
   }
 
 

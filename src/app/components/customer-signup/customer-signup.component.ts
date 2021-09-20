@@ -12,21 +12,27 @@ export class CustomerSignupComponent implements OnInit {
 
   errorMessage?: string;
   successMessage?: string;
-  customerSignUpForm! : FormGroup;
+  customerSignUpForm : FormGroup;
   password :String = "";
   confirm_password :String = "";
-  Id?:number;
+  states = ["haryana", "delhi"];
+  cities:String[]= ["a", "b"];
+  st:String;
+  
+  userName?:String;
+  // public activatedRoute:ActivatedRoute
+  // this.userName = this.activatedRoute.snapshot.params['userName'];
 
   constructor(public formBuilder:FormBuilder,public router: Router,public activatedRoute: ActivatedRoute, public customerService:CustomerService) { }
 
   ngOnInit(): void {
-    this.Id = this.activatedRoute.snapshot.params['Id'];
+    this.userName = this.activatedRoute.snapshot.params['userName'];
     //Model Driven FormBuilder
     this.customerSignUpForm = this.formBuilder.group({
-      customerUserName : ['', [Validators.required, Validators.minLength(5)]],
-      customerName : ['',[Validators.required, Validators.minLength(5)]],     
-      password : ['',[Validators.required,Validators.minLength(5)]],
-      confirm_password : ['',[Validators.required,Validators.minLength(5)]],
+      customerUserName : ['', [Validators.required]],
+      customerName : ['',[Validators.required]],     
+      password : ['',[Validators.required ]],
+      confirm_password : ['',[Validators.required]],
       email : ['',[Validators.required,Validators.email]],
       gender : ['', Validators.required],
       mobileNumber : ['', Validators.required],
@@ -42,16 +48,21 @@ export class CustomerSignupComponent implements OnInit {
   saveCustomer(){
     console.log(this.customerSignUpForm.value)
 
+
+
     this.customerService.customerSignup(this.customerSignUpForm?.value)
       .subscribe(
         response => {
           console.log(response);
           console.log(this.customerSignUpForm.value);
           console.log("SignUp Successfull");
+          this.customerSignUpForm.reset
         },
         error => {
           console.log(error);
         })
+
+        this.customerSignUpForm.reset
   }
 
   passwordMatch(password:String, confirm_password:String) {
@@ -64,9 +75,23 @@ export class CustomerSignupComponent implements OnInit {
 
   login() {
 
+    this.router.navigate(["customerLogin", this.userName]);
+
   }
 
-  dashboard() {
+  Back() {
+       
+    this.router.navigate(["Home", this.userName]);
 
+  }
+  showCity(st:String)
+  {
+    console.log(this.st)
+    if(st==="haryana"){
+      this.cities = ["ambala", "jirakpur"];
+    }
+    else if(st==="delhi"){
+      this.cities = ["delhi", "new delhi"];
+    }
   }
 }

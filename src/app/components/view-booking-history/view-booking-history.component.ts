@@ -13,24 +13,26 @@ export class ViewBookingHistoryComponent implements OnInit {
   successMessage?: string;
 
   bookings: Booking[];
-
+  userName?:String;
+  // public activatedRoute:ActivatedRoute
+  // this.userName = this.activatedRoute.snapshot.params['userName'];
   constructor( public customerService:CustomerService,public router: Router,public activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     ///as
-    // this.Id = this.activatedRoute.snapshot.params['id'];
+    this.userName = this.activatedRoute.snapshot.params['userName'];
     this.getBookingHistory();
   }
 
   getBookingHistory(){
-    this.customerService.viewBookingHistory("ketan123").subscribe((data: any[]) => {
+    this.customerService.viewBookingHistory(this.userName).subscribe((data: any[]) => {
       console.log("###Booking recieved from spring :")
       console.log(data);
       this.bookings = data;
     }, err => this.errorMessage = err)
   }
   Back(){
-  //   this.router.navigate(["customerDashBoard", this.Id]);
+    this.router.navigate(["customerDashboard", this.userName]);
 
   }
 }
