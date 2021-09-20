@@ -5,6 +5,7 @@ import { BillingComponent } from './components/billing/billing.component';
 import { BlogsComponent } from './components/blogs/blogs.component';
 import { CancelBookingComponent } from './components/cancel-booking/cancel-booking.component';
 import { CancelPickupanddropComponent } from './components/cancel-pickupanddrop/cancel-pickupanddrop.component';
+import { ConfirmBookingComponent } from './components/confirm-booking/confirm-booking.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { CustomerBookingFormComponent } from './components/customer-booking-form/customer-booking-form.component';
 import { CustomerSignupComponent } from './components/customer-signup/customer-signup.component';
@@ -45,6 +46,7 @@ const routes: Routes = [
   
   { path:"rooms",component: RoomsComponent },
   { path:"updatePassword",component: UpdatePasswordComponent },
+  { path:"confirmBooking",component: ConfirmBookingComponent },
   
   { path:"viewBookingHistory",component: ViewBookingHistoryComponent }
 
