@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-confirm-booking',
@@ -7,16 +8,58 @@ import { Router } from '@angular/router';
   styleUrls: ['./confirm-booking.component.css']
 })
 export class ConfirmBookingComponent implements OnInit {
-
-  constructor(public router : Router) { }
-
+  Id?:any;
+  message?:String;
+  userName?:String;
+  // public activatedRoute:ActivatedRoute
+  // this.Id = this.activatedRoute.snapshot.params['id'];
+  constructor(public router : Router, public activatedRoute:ActivatedRoute, public customerService:CustomerService) { }
+  display = false;
+  display1 = false;
   ngOnInit(): void {
+    this.Id = this.activatedRoute.snapshot.params['Id'];
+    this.userName = this.activatedRoute.snapshot.params['userName'];
   }
   paymentDone(){
-    this.router.navigate(['billing']);
+    this.display = true
   }
 
   cancel(){
-    this.router.navigate(['']);
+    if(this.Id = "-1"){
+      
+      this.customerService.cancelBooking(this.Id).subscribe(
+        data=>{
+          console.log("delete successfully!!!", data);
+          this.router.navigate(["customerDashboard", this.userName]);
+        },
+        error=>console.log("error got")
+      )
+    }
+    else{
+      this.customerService.cancelBooking(this.Id).subscribe(
+        data=>{
+          console.log("delete successfully!!!", data);
+         
+        },
+        error=>console.log("error got")
+      )
+
+      this.customerService.cancelPickAndDrop(this.Id).subscribe(
+        data=>{
+          console.log("delete successfully!!!", data);
+        },
+        error=>console.log("error got")
+        )
+        this.router.navigate(["customerDashboard", this.userName]);
+    }
+    
+  }
+  final(){
+    this.display1 = true;
+    this.message = "your data will save and your Booking Id is:- "+this.Id;
+
+  }
+  home(){
+    this.router.navigate(["customerDashboard", this.userName]);
   }
 }

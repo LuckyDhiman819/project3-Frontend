@@ -50,7 +50,7 @@ export class CustomerSignupComponent implements OnInit {
 
 
 
-    this.customerService.customerSignup(this.customerSignUpForm?.value)
+    this.customerService.customerSignup(this.customerSignUpForm.value)
       .subscribe(
         response => {
           console.log(response);

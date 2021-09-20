@@ -11,10 +11,13 @@
     To confirm your booking You have to pay 10% Amount of your Room Booking Amount<br><br>
 
     Amount : <input type="text"><br><br>
-    <input class="btn btn-danger" type="submit" value="Cancel Booking" (click)="cancel()">&nbsp;&nbsp;&nbsp;
-    <input class="btn btn-success" type="submit" value="Pay For Confirm Booking" (click)="paymentDone()">
+    <button class="btn btn-danger" type="submit" (click)="cancel()">Cancel Booking</button>&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-success" type="submit"  (click)="paymentDone()">Pay For Confirm Booking</button>&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-danger" *ngIf = "display" type="submit" (click)="final()">Submit</button><br><br>
+    <button class="btn btn-success" *ngIf = "display1"  (click)="home()">Back To the DashBoard</button>
     
 </div>
+<font color = "white">{{message}}</font>
   </h2>
 </div>
 

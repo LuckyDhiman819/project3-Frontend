@@ -23,15 +23,20 @@ export class PickAndDropComponent {
   userName?:String;
   // public activatedRoute:ActivatedRoute
   // this.Id = this.activatedRoute.snapshot.params['id'];
+  
 
   constructor(public activatedRoute:ActivatedRoute, private formBuilder:FormBuilder, public router:Router,public customerService:CustomerService ) { }
 
   ngOnInit() {
+
     this.userName = this.activatedRoute.snapshot.params['userName'];
     this.Id = this.activatedRoute.snapshot.params['Id'];
-    if(this.Id == "-1"){
+    document.getElementById("button1").style.display = "none";
+    document.getElementById("button2").style.display = "none";
+    if(this.Id === "-1"){
       this.display = true;
       this.button2 = true;
+      document.getElementById("button2").style.display = "block";
       this.PickDropForm=this.formBuilder.group({
         pickupDropId:['',Validators.required],
         typeOfTransport:['',Validators.required] ,
@@ -41,7 +46,7 @@ export class PickAndDropComponent {
          });
     }
     else{
-      this.button1 = true
+      document.getElementById("button1").style.display = "block";
     console.log(this.Id, this.userName);
     this.PickDropForm=this.formBuilder.group({
       pickupDropId:[this.Id,Validators.required],
@@ -64,10 +69,10 @@ export class PickAndDropComponent {
             // this.router.navigate([''])
             this.successMessage = "Pickup And Drop added successfully"
             console.log("#######Pickup And Drop Uploaded successfully ");
-            this.router.navigate(["customerDashboard", this.userName]);
+            this.router.navigate(["confirmBooking", this.userName, this.Id]);
           },
           error => {
-            this.errorMessage = "Admit Form Cancel"
+            this.errorMessage = "Pick Up Form Cancel"
             console.log("ERROR in save : " + error);
           });
   
