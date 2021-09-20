@@ -54,7 +54,7 @@
 </div>
 <br>
 <br>
-
+<br>
 <div class="row">
     <div class="col-sm-4">
         <div class="card text-white bg-white">
@@ -63,9 +63,8 @@
                 <p align="center"><i class="fa fa-calendar-plus-o fa-5x" aria-hidden="true"></i></p>
                 <p class="card-text">With supporting text below as a natural
                     lead-in to additional content.</p>
-                <button type="submit" class="btn btn-info btn-lg mb-2">
+                <button type="submit" class="btn btn-info btn-lg mb-2" (click) = "book()">
                     Click
-                    <!-- <a (click)="billing()">Book Appointment</a> -->
                 </button>
             </div>
         </div>
@@ -77,7 +76,7 @@
                 <p align="center"><i class="fa fa-plus-square fa-5x" aria-hidden="true"></i></p>
                 <p class="card-text">With supporting text below as a natural
                     lead-in to additional content.</p>
-                <button type="button" class="btn btn-danger btn-lg">
+                <button type="button" class="btn btn-danger btn-lg" (click) = "cancleBooking()">
                     Click
                     <!-- <a (click)="admitForm()">Admit</a> -->
                 </button>
@@ -91,7 +90,7 @@
                 <p align="center"><i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i></p>
                 <p class="card-text">With supporting text below as a natural
                     lead-in to additional content.</p>
-                <button type="submit" class="btn btn-warning btn-lg">
+                <button type="submit" class="btn btn-warning btn-lg" (click) = "updateBooking()">
                     Click
                     <!-- <a (click)="editForm()">Profile</a> -->
                 </button>
@@ -109,7 +108,7 @@
                 <p align="center"><i class="fa fa-calendar-plus-o fa-5x" aria-hidden="true"></i></p>
                 <p class="card-text">With supporting text below as a natural
                     lead-in to additional content.</p>
-                <button type="submit" class="btn btn-info btn-lg mb-2">
+                <button type="submit" class="btn btn-info btn-lg mb-2" (click) = "addPickDrop()">
                     Click
                     <!-- <a (click)="appointmentForm()">Book Appointment</a> -->
                 </button>
@@ -123,7 +122,7 @@
                 <p align="center"><i class="fa fa-plus-square fa-5x" aria-hidden="true"></i></p>
                 <p class="card-text">With supporting text below as a natural
                     lead-in to additional content.</p>
-                <button type="button" class="btn btn-danger btn-lg">
+                <button type="button" class="btn btn-danger btn-lg" (click) = "canclePickDrop()">
                     Click
                     <!-- <a (click)="admitForm()">Admit</a> -->
                 </button>
@@ -137,9 +136,26 @@
                 <p align="center"><i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i></p>
                 <p class="card-text">With supporting text below as a natural
                     lead-in to additional content.</p>
-                <button type="submit" class="btn btn-warning btn-lg">
+                <button type="submit" class="btn btn-warning btn-lg" (click) = "updatePickDrop()">
                     Click
                     <!-- <a (click)="editForm()">Profile</a> -->
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card text-white bg-white">
+            <div class="card-body" align="center">
+                <h4 class="card-title" align="center"><b>View Booking History</b></h4>
+                <p align="center"><i class="fa fa-calendar-plus-o fa-5x" aria-hidden="true"></i></p>
+                <p class="card-text">With supporting text below as a natural
+                    lead-in to additional content.</p>
+                <button type="submit" class="btn btn-info btn-lg mb-2" (click) = "viewHistory()">
+                    Click
+                    <!-- <a (click)="appointmentForm()">Book Appointment</a> -->
                 </button>
             </div>
         </div>

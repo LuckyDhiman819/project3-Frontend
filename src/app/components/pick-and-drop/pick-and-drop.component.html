@@ -4,6 +4,7 @@
   <br>
 
   <form [formGroup]="PickDropForm" (ngSubmit)="onSubmit()">
+
     
     <div class="form-group">
 
@@ -25,6 +26,7 @@
         <span style="color:white" >&nbsp;Other</span>&nbsp;&nbsp;
         
     </div><br>
+
 
 
     <div class="form-row">
@@ -66,11 +68,10 @@
     </div>
 
     <div class="text-center">
-      <button class="btn btn-primary btn-lg mr-1">Submit</button>
-      <button class="btn btn-secondary btn-lg" type="reset" (click)="onReset()">Clear</button>
+      <button class="btn btn-primary btn-lg mr-1">Next</button>
+      <button class="btn btn-danger btn-lg"  *ngIf = "button1" type="reset" (click)="onReset()">Cancle Form</button>
+      <button class="btn btn-dark btn-lg"  *ngIf = "button2" type="reset" (click)="Back()">Back</button>
     </div>
-
-
 
     <br>
     <br>

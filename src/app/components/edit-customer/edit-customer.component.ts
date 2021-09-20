@@ -26,6 +26,7 @@ export class EditCustomerComponent implements OnInit {
   readonly = true;
   Id?:number;
   SuccessMsg?:String
+  userName?:String;
 // public activatedRoute:ActivatedRoute
 // this.Id = this.activatedRoute.snapshot.params['Id'];
 
@@ -36,7 +37,7 @@ export class EditCustomerComponent implements OnInit {
   ngOnInit(): void {
     // this.employees = this.employeeDetailService.getEmployee();
     //Model Driven FormBuilder
-    this.Id = this.activatedRoute.snapshot.params['Id'];
+    this.userName = this.activatedRoute.snapshot.params['userName'];
     this.getProfile();
     document.getElementById("dummy").style.display = "none"
 
@@ -45,6 +46,7 @@ export class EditCustomerComponent implements OnInit {
 
   saveEmployee(){
     console.log(this.customerEditForm.value)
+
     
   }
 
@@ -68,10 +70,10 @@ export class EditCustomerComponent implements OnInit {
 
   getProfile(){
     // this.adminId = this.activatedRoute.snapshot.params['adminId'];
-    this.customerServices.getCustomer(this.name).subscribe(data => {
+    this.customerServices.getCustomer(this.userName).subscribe(data => {
       // console.log(data);
       this.customer = data;
-      console.log(this.customer.customerUserName, this.name)
+      console.log(this.customer.customerUserName, this.userName)
       this.customerEditForm = this.formBuilder.group({
         customerUserName : [this.customer.customerUserName, Validators.required],
         customerName : [this.customer.customerName,[Validators.required, Validators.minLength(5)]],     
@@ -81,7 +83,8 @@ export class EditCustomerComponent implements OnInit {
         age : [this.customer.age, Validators.required],
         city : [this.customer.city, Validators.required],
         state : [this.customer.state, Validators.required],
-        country : [this.customer.country, Validators.required]
+        country : [this.customer.country, Validators.required],
+        password:[this.customer.password]
       })
     },
       error => console.log(error)
@@ -90,13 +93,14 @@ export class EditCustomerComponent implements OnInit {
     
   editCustomer(){
     console.log(this.customerEditForm.value)
-    this.customerServices.editProfile(this.customerEditForm.value, this.name)
+    this.customerServices.editProfile(this.customerEditForm.value, this.userName)
     .subscribe(
       response => {
         console.log(response);
         this.SuccessMsg = "Details Update Successfully.....";
         console.log("#######Updated successfully");
             // this.router.navigate(['patientDashBoard'])
+            this.customerEditForm.reset
           },
           error => {
             this.errMessage = "Data not saved"
@@ -105,10 +109,10 @@ export class EditCustomerComponent implements OnInit {
   }
 
 forgetPassword(){
-  // this.router.navigate(["adminForgetPassword", this.Id]);
+  this.router.navigate(["updatePassword", this.userName]);
 }
 Back(){
-  // this.router.navigate(["adminDashBoard", this.Id]);
+  this.router.navigate(["customerDashboard", this.userName]);
 }
 
 

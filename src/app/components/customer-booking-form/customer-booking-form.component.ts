@@ -14,16 +14,18 @@ export class CustomerBookingFormComponent implements OnInit {
   bookingForm!: FormGroup;
   errorMessage?: string;
   successMessage?: string;
-  Id?:number;
+
+  Id?:any;
   booking:Booking[]=[];
   roomType=["Semi Delux","Delux","Luxary","Presedential suite"] 
+  userName?:String;
   // public activatedRoute:ActivatedRoute
   // this.Id = this.activatedRoute.snapshot.params['id'];
-  // constructor(public formBuilder:FormBuilder,public router: Router,public activatedRoute: ActivatedRoute) { }
-  constructor(public formBuilder:FormBuilder,public router: Router,public activatedRoute: ActivatedRoute,public customerService:CustomerService) { }
+  constructor(public formBuilder:FormBuilder,public router: Router,public activatedRoute: ActivatedRoute, public customerService:CustomerService) { }
 
   ngOnInit(): void {
-    // this.Id = this.activatedRoute.snapshot.params['id'];
+    this.userName = this.activatedRoute.snapshot.params['userName'];
+
     this.bookingForm= this.formBuilder.group({
       customerUserName : ['',Validators.required],
       customerName : ['',Validators.required],
@@ -44,21 +46,31 @@ export class CustomerBookingFormComponent implements OnInit {
 
   sendbookingForm(){
     console.log(this.bookingForm?.value);
-    this.customerService.bookingForm(this.bookingForm?.value)
-        .subscribe(
-          response => {
-            console.log(response);
-            this.successMessage = "Your Room is booked but in rejection wait till the Admin Approved"
-            console.log("#######Appointment Booked successfully ");
-          },
-          error => {
-            this.errorMessage = "Room Booking Cancel"
-            console.log("ERROR in save : " + error);
-          });
+
+
+    this.customerService.bookingForm(this.bookingForm.value).subscribe(
+      data => {
+        this.Id = data;
+        console.log(this.Id);
+        if(this.bookingForm.value.pickUpAndDrop == "yes"){
+          this.router.navigate(["addPickAndDrop", this.userName, this.Id]);
+        }
+        else{
+          this.router.navigate(["addPickAndDrop", this.userName]);
+        }
+      }, 
+      error => {
+        this.errorMessage = "Admit Form Cancel"
+        console.log("ERROR in save : " + error);
+      });
   }
 
 
   Back(){
+    this.router.navigate(["customerDashboard", this.userName]);
+  }
+  next(){
+    
   }
 
 
