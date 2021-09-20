@@ -15,15 +15,11 @@
                             <div class="form-group col-md-4">
                                 <i class="fa fa-user fa-lg"></i> &nbsp;
                                 <label style="font-weight: bold; font-size: 20px; color: black;">Username </label>
-                                <input type="text" name="customerUserName" id="customerUserName"
-                                    formControlName="customerUserName" style="color:black;"
-                                    class="form-control border border-primary" placeholder="Entre your User Name" />
-                                <div class=""
-                                    *ngIf="customerLoginForm.get('customerUserName')?.hasError('required') && customerLoginForm.get('customerUserName')?.dirty">
-                                    <!-- Customer Username is Required -->
-                                    <!-- <b> <font color = "red">Customer Username is Required</font></b> -->
-                                </div>
-
+                                <input type="text" name="customerUserName" id="customerUserName" placeholder="Enter Customer Username" formControlName="customerUserName" style="color:black;"
+                                    class="form-control border border-primary" />
+                                <div *ngIf="customerLoginForm.get('customerUserName')?.hasError('required') && customerLoginForm.get('customerUserName')?.dirty">
+                                    <b> <font color = "red">Customer Username is Required</font></b>
+                               </div>
                             </div>
                         </div>
                         <div class="form-row">
@@ -32,10 +28,10 @@
                                 <i class="fa fa-key fa-lg"></i> &nbsp;
                                 <label style="font-weight: bold; font-size: 20px; color: black;">Password </label>
                                 <input type="password" name="password" id="password" formControlName="password"
-                                    style="color:black;" class="form-control border border-primary" placeholder="Entre Your Password"/>
-                                <div class=""
-                                    *ngIf="customerLoginForm.get('password')?.hasError('required') && customerLoginForm.get('password')?.dirty">
-                                    <font color = "red">Password is Required</font>
+
+                                    style="color:black;"  placeholder="Enter Password" class="form-control border border-primary" />
+                                <div *ngIf="customerLoginForm.get('password')?.hasError('required') && customerLoginForm.get('password')?.dirty">
+                                    <b> <font color = "red">Password is Required</font></b>
                                 </div>
 
                             </div>
@@ -47,8 +43,7 @@
                             <button type="submit" class="btn btn-primary" [disabled]="!customerLoginForm.valid"
                                 (click)="login()">Log-in</button> &nbsp;
                             <button class="btn btn-warning btn-lg" (click)="sign_up()">Sign-Up</button> &nbsp;
-                            <button class="btn btn-danger btn-lg" (click)="forgetPassword()">Forget
-                                Password</button>&nbsp;
+                            <button class="btn btn-danger btn-lg" (click)="forgetPassword()">Forget Password</button>&nbsp;
                             <br><br>
 
                         </div>

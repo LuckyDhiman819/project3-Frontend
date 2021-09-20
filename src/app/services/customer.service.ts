@@ -8,7 +8,7 @@ import { ForgetPassword } from '../models/forget-password';
 import { PickupAndDrop } from '../models/pickup-and-drop';
 import { Booking } from '../models/booking';
 
-const customerURL = "http://localhost:9091/customer";
+const customerURL = "http://localhost:9090/customer";
 
 @Injectable({
   providedIn: 'root'

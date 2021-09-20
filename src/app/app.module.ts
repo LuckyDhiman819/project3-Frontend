@@ -36,6 +36,7 @@ import { UpdatePickupanddropComponent } from './components/update-pickupanddrop/
 import { BillingComponent } from './components/billing/billing.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { TermAndConditionComponent } from './components/term-and-condition/term-and-condition.component';
+import { ConfirmBookingComponent } from './components/confirm-booking/confirm-booking.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { TermAndConditionComponent } from './components/term-and-condition/term-
     BillingComponent,
     ContactUsComponent,
     TermAndConditionComponent,
+    ConfirmBookingComponent,
   ],
   imports: [
     FormsModule,

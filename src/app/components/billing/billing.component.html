@@ -11,14 +11,14 @@
       <form novalidate [formGroup]="paymentForm" (ngSubmit)="PaymentDone()">
         <fieldset>
           <div class="form-group"><br>
-
-            <div class="table-responsive">
+            <!-- hello -->
+            <div class="table-responsive" id="htmlData">
               <!-- <font color="red">{{errorMessage}}</font>
                 <font color=green>{{ successMessage }}</font> -->
 
               <!-- <table border="5" BORDERCOLOR=white align="center" cellpadding="10"
                     cellspacing="10" class="table text-white bg-dark"style="background-color: lightsteelblue;"> -->
-              <table border="5" BORDERCOLOR=white align="center" cellpadding="10" cellspacing="10"
+               <table border="5" BORDERCOLOR=white align="center" cellpadding="10" cellspacing="10"
                 class="table text-white">
                 <thead class="thead text-dark" style="background-color: lightsteelblue;opacity: .6;right: 12px;">
                   <tr>
@@ -60,13 +60,40 @@
                   </td>
                 </tr>
                 <tr style="color: rgba(255, 255, 255, 0);opacity: .9;">
-                  <td style="opacity: 1; font-weight: 1000;color: white;">Total Amount</td>
+                  <td style="opacity: 1; font-weight: 1000;color: gray;">Total Amount</td>
                   <td></td>
-                  <td style="opacity: 1; font-weight: 1000;color: white;">100-</td>
+                  <td style="opacity: 1; font-weight: 1000;color: grey;">100-</td>
                 </tr>
 
-                <!-- </tr> -->
-              </table>
+                
+              </table> 
+              <!-- <table class="table table-bordered">
+                <tr class="table-primary">
+                  
+                  <th>Bill No</th>
+                  <th>Patient Id</th>
+                  <th>Medicines</th>
+                  <th>Surgery Cost</th>
+                  <th>Appointment Cost</th>
+                  <th>Doctor Fees</th>
+                  <th>Hospital Charges</th>
+                  <th>Other Charges</th>
+
+
+                </tr>
+                <tr *ngFor="let user of USERS">
+                  <th>{{user.Bill}}</th>
+                  <td>{{user.Id}}</td>
+                  <td>{{user.Medicines}}</td>
+                  <td>{{user.Surgery}}</td>
+                  <td>{{user.Appointment}}</td>
+                  <td>{{user.Doctor}}</td>
+                  <td>{{user.HospitalCharges}}</td>
+                  <td>{{user.OtherCharges}}</td>
+
+                </tr>
+              </table> -->
+        
             </div>
 
             <br>
@@ -106,11 +133,13 @@
               <br>
             </div>
 
-            <button type="submit" class="btn btn-primary">Download Invoice</button>&nbsp; &nbsp;&nbsp; &nbsp;
-            <button class="btn btn-danger">Pay</button>&nbsp; &nbsp;&nbsp; &nbsp;
+            <button class="btn btn-primary" (click)="openPDF()">Download Invoice</button>&nbsp; &nbsp;&nbsp; &nbsp;
+            <button type="submit" class="btn btn-danger">Pay</button>&nbsp; &nbsp;&nbsp; &nbsp;
             <button class="btn btn-dark" (click)="Back()">Back</button>
 
           </div>
+
+          
           <br>
 
         </fieldset>
