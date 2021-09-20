@@ -17,9 +17,8 @@
                                 <label style="font-weight: bold; font-size: 20px; color: black;">Username </label>
                                 <input type="text" name="customerUserName" id="customerUserName" placeholder="Enter Customer Username" formControlName="customerUserName" style="color:black;"
                                     class="form-control border border-primary" />
-                                <div class="alert alert-danger"
-                                    *ngIf="customerLoginForm.get('customerUserName')?.hasError('required') && customerLoginForm.get('customerUserName')?.dirty">
-                                    Customer Username is Required
+                                <div *ngIf="customerLoginForm.get('customerUserName')?.hasError('required') && customerLoginForm.get('customerUserName')?.dirty">
+                                    <b> <font color = "red">Customer Username is Required</font></b>
                                 </div>
 
                             </div>
@@ -31,9 +30,8 @@
                                 <label style="font-weight: bold; font-size: 20px; color: black;">Password </label>
                                 <input type="password" name="password" id="password" formControlName="password"
                                     style="color:black;"  placeholder="Enter Password" class="form-control border border-primary" />
-                                <div class="alert alert-danger"
-                                    *ngIf="customerLoginForm.get('password')?.hasError('required') && customerLoginForm.get('password')?.dirty">
-                                    Password is Required
+                                <div *ngIf="customerLoginForm.get('password')?.hasError('required') && customerLoginForm.get('password')?.dirty">
+                                    <b> <font color = "red">Password is Required</font></b>
                                 </div>
 
                             </div>
@@ -45,8 +43,7 @@
                             <button type="submit" class="btn btn-primary" [disabled]="!customerLoginForm.valid"
                                 (click)="login()">Log-in</button> &nbsp;
                             <button class="btn btn-warning btn-lg" (click)="sign_up()">Sign-Up</button> &nbsp;
-                            <button class="btn btn-danger btn-lg" (click)="forgetPassword()">Forget
-                                Password</button>&nbsp;
+                            <button class="btn btn-danger btn-lg" (click)="forgetPassword()">Forget Password</button>&nbsp;
                             <br><br>
 
                             <button class="btn btn-dark btn-lg" (click)="back()">Back</button>&nbsp;
