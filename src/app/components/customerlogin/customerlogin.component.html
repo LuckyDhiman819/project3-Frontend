@@ -15,8 +15,7 @@
                             <div class="form-group col-md-4">
                                 <i class="fa fa-user fa-lg"></i> &nbsp;
                                 <label style="font-weight: bold; font-size: 20px; color: black;">Username </label>
-                                <input type="text" name="customerUserName" id="customerUserName"
-                                    formControlName="customerUserName" style="color:black;"
+                                <input type="text" name="customerUserName" id="customerUserName" placeholder="Enter Customer Username" formControlName="customerUserName" style="color:black;"
                                     class="form-control border border-primary" />
                                 <div class="alert alert-danger"
                                     *ngIf="customerLoginForm.get('customerUserName')?.hasError('required') && customerLoginForm.get('customerUserName')?.dirty">
@@ -31,7 +30,7 @@
                                 <i class="fa fa-key fa-lg"></i> &nbsp;
                                 <label style="font-weight: bold; font-size: 20px; color: black;">Password </label>
                                 <input type="password" name="password" id="password" formControlName="password"
-                                    style="color:black;" class="form-control border border-primary" />
+                                    style="color:black;"  placeholder="Enter Password" class="form-control border border-primary" />
                                 <div class="alert alert-danger"
                                     *ngIf="customerLoginForm.get('password')?.hasError('required') && customerLoginForm.get('password')?.dirty">
                                     Password is Required
