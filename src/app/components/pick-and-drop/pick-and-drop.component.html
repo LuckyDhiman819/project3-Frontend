@@ -39,18 +39,17 @@
         <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
           <div *ngIf="f.time.errors.required">Time is required</div>
         </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-4"></div>
-      <div class="form-group col-md-4">
-        <label style="font-weight: bold; font-size: 20px; color: black;">Number of Passenger</label>
-        <input type="number" formControlName="numberOfPassenger" style="color:black;"
-          class="form-control border border-primary"
-          [ngClass]="{ 'is-invalid': submitted && f.numberOfPassenger.errors }" />
-        <div *ngIf="submitted && f.numberOfPassenger.errors" class="invalid-feedback">
-          <div *ngIf="f.numberOfPassenger.errors.required">Passengers is required</div>
-        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4"></div>
+          <div class="form-group col-md-4">
+            <label style="font-weight: bold; font-size: 20px; color: black;">Number of Passenger</label>
+            <input type="number" formControlName="passengers" style="color:black;"
+              class="form-control border border-primary"
+              [ngClass]="{ 'is-invalid': submitted && f.passengers.errors }" />
+            <div *ngIf="submitted && f.passengers.errors" class="invalid-feedback">
+              <div *ngIf="f.passengers.errors.required"> <b><font color = "red">Passengers is required</font></b> </div>
+            </div>
+          </div>
       </div>
     </div>
     <div class="form-row">
@@ -65,11 +64,15 @@
               <option value="Bus">Bus Stand</option>
               <option value="Rail" enabled selected>Railway Station</option>
             </select> -->
-        <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
-          <div *ngIf="f.location.errors.required">Location is required</div>
+            <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+              <div *ngIf="f.location.errors.required"> <b><font color = "red">Location is required</font></b> </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+
+        <div class="text-center">
+          <button class="btn btn-primary mr-1">Submit</button>
+          <button class="btn btn-secondary" type="reset" (click)="onReset()">Clear</button>
 
     <div class="text-center">
       <button class="btn btn-primary btn-lg mr-1">Submit</button>

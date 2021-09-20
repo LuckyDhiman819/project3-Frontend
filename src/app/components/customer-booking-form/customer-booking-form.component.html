@@ -14,9 +14,9 @@
           <div class="form-group"><br>
             <label><h4><b style="color:white">Customer User Name</b></h4></label>
             <input type="text" class="form-control" formControlName="customerUserName" placeholder="Enter Customer Name">
-            <div class="alert alert-danger" *ngIf="bookingForm?.get('customerUserName')?.hasError('required') &&
+            <div *ngIf="bookingForm?.get('customerUserName')?.hasError('required') &&
                      bookingForm.get('customerUserName')?.dirty">
-              customer name is Required
+              <b><font color = "red">customer name is Required</font></b> 
             </div>
             <br>
 
@@ -35,9 +35,9 @@
               <br>
               <br>
               <input type="text" class="form-control" formControlName="idProof" placeholder="Enter your Id Number">
-            <div class="alert alert-danger" *ngIf="bookingForm?.get('idProof')?.hasError('required') &&
+            <div *ngIf="bookingForm?.get('idProof')?.hasError('required') &&
                      bookingForm.get('idProof')?.dirty">
-              Id Proof is Required
+                     <b><font color = "red">ID proof is Required</font></b>
             </div>
             </div>
             <br>
@@ -45,9 +45,9 @@
           <div class="form-group">
             <label><h4><b style="color:white">Email :</b></h4></label>
             <input type="email" class="form-control" formControlName="email" placeholder="Enter your Email">
-            <div class="alert alert-danger"
+            <div
               *ngIf="bookingForm.get('email')?.hasError('required') && bookingForm.get('email')?.dirty">
-              Email is Required
+              <b><font color = "red">Email is Required</font></b>
             </div>
           </div><br>
 
@@ -70,9 +70,9 @@
           <div class="form-group">
             <label><h4><b style="color:white">Number Of Room:</b></h4></label>
             <input type="number" class="form-control" formControlName="numberOfRoom" placeholder="Enter number of Room you Need">
-            <div class="alert alert-danger"
+            <div
               *ngIf="bookingForm.get('numberOfRoom')?.hasError('required') && bookingForm.get('numberOfRoom')?.dirty">
-              This section is required
+              <b><font color = "red">This section is required</font></b> 
             </div>
           </div><br>
 
@@ -87,9 +87,9 @@
                 <option>Triple Bed</option>
               </select>
             </div>
-            <div class="alert alert-danger"
+            <div
               *ngIf="bookingForm.get('roomSize')?.hasError('required') && bookingForm.get('roomSize')?.dirty">
-              roomSize is Required
+              <b><font color = "red">Room-size is Required</font></b> 
             </div>
           </div><br>
           <br>
