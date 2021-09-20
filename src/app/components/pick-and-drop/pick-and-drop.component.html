@@ -50,7 +50,7 @@
               class="form-control border border-primary"
               [ngClass]="{ 'is-invalid': submitted && f.passengers.errors }" />
             <div *ngIf="submitted && f.passengers.errors" class="invalid-feedback">
-              <div *ngIf="f.passengers.errors.required">Passengers is required</div>
+              <div *ngIf="f.passengers.errors.required"> <b><font color = "red">Passengers is required</font></b> </div>
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@
               <option value="Rail" enabled selected>Railway Station</option>
             </select> -->
             <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
-              <div *ngIf="f.location.errors.required">Location is required</div>
+              <div *ngIf="f.location.errors.required"> <b><font color = "red">Location is required</font></b> </div>
             </div>
           </div>
         </div>

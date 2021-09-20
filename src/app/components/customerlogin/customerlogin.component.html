@@ -16,8 +16,8 @@
                     <div class="box">
                         <i class="fa fa-user fa-lg"></i>
                             <input type="number" name="customerUserName" id="customerUserName" placeholder="Entre Your id" formControlName="customerUserName">
-                            <div class="alert alert-danger" *ngIf="customerLoginForm.get('customerUserName')?.hasError('required') && customerLoginForm.get('customerUserName')?.dirty">
-                            Customer Username is Required
+                            <div *ngIf="customerLoginForm.get('customerUserName')?.hasError('required') && customerLoginForm.get('customerUserName')?.dirty">
+                                <b> <font color = "red">Customer Username is Required</font></b>
                             </div>
                         </div><br>
                         <label style="color:black"><b>Password :</b></label>
@@ -25,8 +25,8 @@
                         <div class="box">
                             <i class="fa fa-key fa-lg"></i>
                             <input type="password" name="password" id="password" placeholder="Entre Your Password" formControlName="password">
-                            <div class="alert alert-danger" *ngIf="customerLoginForm.get('password')?.hasError('required') && customerLoginForm.get('password')?.dirty">
-                                Password is Required
+                            <div *ngIf="customerLoginForm.get('password')?.hasError('required') && customerLoginForm.get('password')?.dirty">
+                                <b><font color = "red">Password is Required</font></b> 
                             </div>
 
                         </div>
