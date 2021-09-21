@@ -43,6 +43,7 @@ export class CustomerBookingFormComponent implements OnInit {
       checkOutDate : ['',Validators.required],
       pickUpAndDrop : ['',Validators.required]
     })
+    // this.sendbookingForm();
   }
 
   sendbookingForm(){
@@ -57,7 +58,7 @@ export class CustomerBookingFormComponent implements OnInit {
           this.router.navigate(["addPickAndDrop", this.userName, this.Id]);
         }
         else{
-          this.router.navigate(["addPickAndDrop", this.userName]);
+          this.router.navigate(["confirmBooking", this.userName, this.Id]);
         }
       }, 
       error => {
