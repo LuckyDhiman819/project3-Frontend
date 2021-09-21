@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
-import { AboutComponent } from './components/about/about.component';
-import { BillingComponent } from './components/billing/billing.component';
-import { BlogsComponent } from './components/blogs/blogs.component';
+import { CustomerAboutComponent } from './components/customer-about/customer-about.component';
+import { CustomerBillingComponent } from './components/customer-billing/customer-billing.component';
+import { CustomerBlogsComponent } from './components/customer-blogs/customer-blogs.component';
 import { CancelBookingComponent } from './components/cancel-booking/cancel-booking.component';
 import { CancelPickupanddropComponent } from './components/cancel-pickupanddrop/cancel-pickupanddrop.component';
 import { ConfirmBookingComponent } from './components/confirm-booking/confirm-booking.component';
@@ -14,26 +14,28 @@ import { CustomerSignupComponent } from './components/customer-signup/customer-s
 import { CustomerloginComponent } from './components/customerlogin/customerlogin.component';
 import { EditBookingComponent } from './components/edit-booking/edit-booking.component';
 import { EditCustomerComponent } from './components/edit-customer/edit-customer.component';
-import { HomeComponent } from './components/home/home.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
+import { CustomerNavbarComponent } from './components/customer-navbar/customer-navbar.component';
 import { PickAndDropComponent } from './components/pick-and-drop/pick-and-drop.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { TermAndConditionComponent } from './components/term-and-condition/term-and-condition.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import { UpdatePickupanddropComponent } from './components/update-pickupanddrop/update-pickupanddrop.component';
 import { ViewBookingHistoryComponent } from './components/view-booking-history/view-booking-history.component';
+import { AddMoneyToWalletComponent } from './components/add-money-to-wallet/add-money-to-wallet.component';
+import { WalletComponent } from './components/wallet/wallet.component';
 
 const routes: Routes = [
   // { path:"",component: HomeComponent },
   // { path:"customerDashboard", component:HomeComponent},
-  { path:"customerDashboard/:userName", component:HomeComponent},
-  { path:"about/:userName",component: AboutComponent },
+  { path:"customerDashboard/:userName", component:CustomerDashboardComponent},
+  { path:"about/:userName",component: CustomerAboutComponent },
   { path:"contactUs",component: ContactUsComponent },
-  { path:"blogs",component: BlogsComponent },
+  { path:"blogs",component: CustomerBlogsComponent },
   { path:"termAndCondition",component: TermAndConditionComponent },
   { path:"cancelBooking/:userName",component: CancelBookingComponent },
   { path:"editBooking/:userName",component: EditBookingComponent },
-  { path:"billing",component: BillingComponent },
+  { path:"billing/:userName",component: CustomerBillingComponent },
   { path:"customerBooking/:userName",component: CustomerBookingFormComponent },
   // { path:"customerSignUp",component: CustomerSignupComponent },
   { path:"customerSignUp/:userName",component: CustomerSignupComponent },
@@ -46,11 +48,13 @@ const routes: Routes = [
   { path:"cancelPickAndDrop/:userName",component: CancelPickupanddropComponent },
   { path:"contactUs/:userName",component: ContactUsComponent },
   { path:"rooms/:userName",component: RoomsComponent },
-  { path:"navbar/:userName",component: NavbarComponent },
+  { path:"navbar/:userName",component: CustomerNavbarComponent },
   // { path:"updatePassword",component: UpdatePasswordComponent },
   { path:"updatePassword/:userName",component: UpdatePasswordComponent },
   { path:"viewBookingHistory/:userName",component: ViewBookingHistoryComponent },
   { path:"confirmBooking/:userName/:Id",component: ConfirmBookingComponent },
+  { path:"addMoneyToWallet/:userName",component: AddMoneyToWalletComponent },
+  { path:"wallet/:userName",component: WalletComponent },
 
 ];
 

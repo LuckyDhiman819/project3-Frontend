@@ -31,9 +31,10 @@ export class PickAndDropComponent {
 
     this.userName = this.activatedRoute.snapshot.params['userName'];
     this.Id = this.activatedRoute.snapshot.params['Id'];
+    console.log(this.Id);
     document.getElementById("button1").style.display = "none";
     document.getElementById("button2").style.display = "none";
-    if(this.Id === "-1"){
+    if(this.Id == "-2"){
       this.display = true;
       this.button2 = true;
       document.getElementById("button2").style.display = "block";

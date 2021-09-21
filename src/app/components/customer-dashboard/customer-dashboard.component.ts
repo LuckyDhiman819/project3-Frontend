@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-customer-dashboard',
+  templateUrl: './customer-dashboard.component.html',
+  styleUrls: ['./customer-dashboard.component.css']
 })
-export class HomeComponent implements OnInit {
+export class CustomerDashboardComponent implements OnInit {
 
   userName?:String;
   // public activatedRoute:ActivatedRoute
@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     this.userName = this.activatedRoute.snapshot.params['userName'];
   }
   billing(){
-    this.router.navigate(['billing']);
+    this.router.navigate(['billing', this.userName]);
   }
   book(){
     this.router.navigate(['customerBooking',this.userName ]);
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
   }
   addPickDrop(){
     
-    this.router.navigate(['addPickAndDrop',this.userName, "-1"]);
+    this.router.navigate(['addPickAndDrop',this.userName, "-2"]);
   }
   canclePickDrop(){
     this.router.navigate(['cancelPickAndDrop',this.userName ]);

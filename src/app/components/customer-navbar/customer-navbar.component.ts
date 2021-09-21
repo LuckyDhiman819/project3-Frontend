@@ -2,32 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'app-customer-navbar',
+  templateUrl: './customer-navbar.component.html',
+  styleUrls: ['./customer-navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class CustomerNavbarComponent implements OnInit {
 
   display = false;
   userName?:String;
   room:String;
+  Id:any;
   // public activatedRoute:ActivatedRoute
   // this.userName = this.activatedRoute.snapshot.params['userName'];
   constructor(public router : Router,  public activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.userName = this.activatedRoute.snapshot.params['userName'];
-    if(this.userName == "-1"){
+    this.Id = this.activatedRoute.snapshot.params['Id'];
+    console.log(this.Id, this.userName)
+    if(this.userName === "-1"){
       this.display = false;
     }
     else{
       this.display = true;
     }
+
+    
     
   }
 
   billing(){
-    this.router.navigate(['billing']);
+    this.router.navigate(['wallet', this.userName]);
   }
 
   home(){
@@ -37,7 +42,7 @@ export class NavbarComponent implements OnInit {
     }
     else{
       console.log(this.userName)
-      this.router.navigate(["navbar", this.userName]);
+      
       this.router.navigate(["customerDashboard", this.userName]);
     }
     
@@ -47,7 +52,7 @@ export class NavbarComponent implements OnInit {
   }
   rooms(){
     
-    this.router.navigate(["navbar", this.userName]);
+    
     this.router.navigate(["rooms", this.userName]);
   }
 
@@ -55,7 +60,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(["customerLogin", "-1"]);
   }
   edit(){
-    this.router.navigate(["editCustomer", this.userName]);
+    this.router.navigate(["edcustomer-itCustomer", this.userName]);
   }
   about(){
     this.router.navigate(["about", this.userName]);

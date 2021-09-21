@@ -25,9 +25,10 @@ export class CustomerBookingFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.userName = this.activatedRoute.snapshot.params['userName'];
+    console.log(this.userName)
 
     this.bookingForm= this.formBuilder.group({
-      customerUserName : ['',Validators.required],
+      customerUserName : [this.userName,Validators.required],
       customerName : ['',Validators.required],
       idProof : ['',Validators.required],
       email : ['',[Validators.required,Validators.email]],

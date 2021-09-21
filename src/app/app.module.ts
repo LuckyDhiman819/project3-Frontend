@@ -7,14 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
+import { CustomerFooterComponent } from './components/customer-footer/customer-footer.component';
+import { CustomerNavbarComponent } from './components/customer-navbar/customer-navbar.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
-import { BlogsComponent } from './components/blogs/blogs.component';
+import { CustomerBlogsComponent } from './components/customer-blogs/customer-blogs.component';
 import { ElementsComponent } from './components/elements/elements.component';
-import { ConactComponent } from './components/conact/conact.component';
-import { AboutComponent } from './components/about/about.component';
+import { CustomerAboutComponent } from './components/customer-about/customer-about.component';
 
 import { EditCustomerComponent } from './components/edit-customer/edit-customer.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
@@ -33,23 +32,24 @@ import { CancelBookingComponent } from './components/cancel-booking/cancel-booki
 import { CancelPickupanddropComponent } from './components/cancel-pickupanddrop/cancel-pickupanddrop.component';
 import { UpdatePickupanddropComponent } from './components/update-pickupanddrop/update-pickupanddrop.component';
 
-import { BillingComponent } from './components/billing/billing.component';
+import { CustomerBillingComponent } from './components/customer-billing/customer-billing.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { TermAndConditionComponent } from './components/term-and-condition/term-and-condition.component';
 import { ConfirmBookingComponent } from './components/confirm-booking/confirm-booking.component';
+import { WalletComponent } from './components/wallet/wallet.component';
+import { AddMoneyToWalletComponent } from './components/add-money-to-wallet/add-money-to-wallet.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    FooterComponent,
-    NavbarComponent,
+    CustomerDashboardComponent,
+    CustomerFooterComponent,
+    CustomerNavbarComponent,
     RoomsComponent,
-    BlogsComponent,
+    CustomerBlogsComponent,
     ElementsComponent,
-    ConactComponent,
-    AboutComponent,
+    CustomerAboutComponent,
     EditCustomerComponent,
     UpdatePasswordComponent,
     EditBookingComponent,
@@ -61,10 +61,12 @@ import { ConfirmBookingComponent } from './components/confirm-booking/confirm-bo
     CancelBookingComponent,
     CancelPickupanddropComponent,
     UpdatePickupanddropComponent,
-    BillingComponent,
+    CustomerBillingComponent,
     ContactUsComponent,
     TermAndConditionComponent,
     ConfirmBookingComponent,
+    WalletComponent,
+    AddMoneyToWalletComponent
   ],
   imports: [
     FormsModule,

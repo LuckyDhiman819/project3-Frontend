@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
+import { WalletService } from 'src/app/services/wallet.service';
 
 @Component({
   selector: 'app-customer-signup',
@@ -23,7 +24,7 @@ export class CustomerSignupComponent implements OnInit {
   // public activatedRoute:ActivatedRoute
   // this.userName = this.activatedRoute.snapshot.params['userName'];
 
-  constructor(public formBuilder:FormBuilder,public router: Router,public activatedRoute: ActivatedRoute, public customerService:CustomerService) { }
+  constructor(public formBuilder:FormBuilder,public router: Router,public activatedRoute: ActivatedRoute, public customerService:CustomerService, public walletService: WalletService) { }
 
   ngOnInit(): void {
     this.userName = this.activatedRoute.snapshot.params['userName'];
@@ -47,9 +48,6 @@ export class CustomerSignupComponent implements OnInit {
 
   saveCustomer(){
     console.log(this.customerSignUpForm.value)
-
-
-
     this.customerService.customerSignup(this.customerSignUpForm.value)
       .subscribe(
         response => {
@@ -61,6 +59,15 @@ export class CustomerSignupComponent implements OnInit {
         error => {
           console.log(error);
         })
+        this.walletService.addWallet(this.customerSignUpForm.value.customerUserName, 5000).subscribe(
+          response => {
+            console.log(response);
+            console.log("wallet genrated Successfull");
+          },
+          error => {
+            console.log(error);
+          });
+
 
         this.customerSignUpForm.reset
   }

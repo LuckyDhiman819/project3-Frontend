@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-customer-navbar></app-customer-navbar>
 
 <div class="bradcam_area breadcam_bg_1">
   <h3 style="color: rgb(240, 236, 11);"><b>Customer Booking Form</b></h3>
@@ -15,7 +15,7 @@
           <div class="form-group">
           <br>
             <label><h4><b style="color:white">Customer User Name : </b></h4></label>
-              <input type="text" class="form-control" formControlName="customerUserName" placeholder="Enter Customer User Name">
+              <input type="text" class="form-control" formControlName="customerUserName" readonly placeholder="Enter Customer User Name">
                 <div  *ngIf="bookingForm?.get('customerUserName')?.hasError('required') && bookingForm.get('customerUserName')?.dirty">
                   <b><font color = "red">Customer User Name is Required</font></b> 
                 </div>
@@ -166,4 +166,4 @@
 </div>
 </div>
 
-<app-footer></app-footer>
+<app-customer-footer></app-customer-footer>
